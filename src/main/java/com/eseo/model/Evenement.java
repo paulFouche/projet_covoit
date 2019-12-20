@@ -1,4 +1,4 @@
-package com.eseo.dao;
+package com.eseo.model;
 
 public class Evenement {
 

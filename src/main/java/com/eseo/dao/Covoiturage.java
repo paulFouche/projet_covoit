@@ -13,41 +13,52 @@ public class Covoiturage {
     private Integer idCreateur;
     private Integer idEvenement;
 
+    public Covoiturage(Integer id, String localisationDepart, Date dateDepart, String localisationArrivee, Double prix, Integer nbPlaces, Integer idCreateur, Integer idEvenement) {
+        this.id = id;
+        this.localisationDepart = localisationDepart;
+        this.dateDepart = dateDepart;
+        this.localisationArrivee = localisationArrivee;
+        this.prix = prix;
+        this.nbPlaces = nbPlaces;
+        this.idCreateur = idCreateur;
+        this.idEvenement = idEvenement;
+    }
+
     // GETTERS
-    private Integer getId(){
+    public Integer getId(){
         return this.id;
     }
 
-    private String getLocalisationDepart(){
+    public String getLocalisationDepart(){
         return this.localisationDepart;
     }
 
-    private Date getDateDepart(){
+    public Date getDateDepart(){
         return this.dateDepart;
     }
 
-    private String getLocalisationArrivee(){
+    public String getLocalisationArrivee(){
         return this.localisationArrivee;
     }
 
-    private Double getPrix(){
+    public Double getPrix(){
         return this.prix;
     }
 
-    private Integer nbPlaces(){
+    public Integer nbPlaces(){
         return this.nbPlaces;
     }
 
-    private Integer getIdCreateur(){
+    public Integer getIdCreateur(){
         return this.idCreateur;
     }
 
-    private Integer getIdEvenement(){
+    public Integer getIdEvenement(){
         return this.idEvenement;
     }
 
     //SETTERS
-    private void setId(Integer id){
+    public void setId(Integer id){
         this.id = id;
     }
 

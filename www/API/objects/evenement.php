@@ -19,7 +19,7 @@ class Evenement{
         $this->conn = $db;
     }
 
-    // create new user record
+    // create new Evenement record
     function create(){
     
         // insert query
@@ -108,7 +108,7 @@ class Evenement{
     
     // update() method will be here
 
-    // update a user record
+    // update a Evenement record
     public function update(){
     
         // if nb_place needs to be updated

@@ -13,7 +13,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$category = new Category($db);
+$category = new Covoiturage($db);
  
 // query categorys
 $stmt = $category->read();

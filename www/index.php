@@ -23,10 +23,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#" id='home'>Home</a>
-            <a class="nav-item nav-link" href="#" id='update_account'>Account</a>
+            <a class="nav-item nav-link" href="#" id='proposerUnTrajet'>Proposer un trajet</a>
+            <a class="nav-item nav-link" href="#" id='recherche'>Rechercher</a>
+            <a class="nav-item nav-link" href="#" id='update_account'>Mon Compte</a>
+            <a class="nav-item nav-link" href="#" id='mesVoyages'>Mes Voyages</a>
             <a class="nav-item nav-link" href="#" id='logout'>Logout</a>
             <a class="nav-item nav-link" href="#" id='login'>Login</a>
-            <a class="nav-item nav-link" href="#" id='sign_up'>Sign Up</a>
+            <a class="nav-item nav-link" href="#" id='sign_up'>Inscription</a>
         </div>
     </div>
 </nav>
@@ -68,6 +71,34 @@ $(document).ready(function(){
                     <input type="text" class="form-control" name="firstname" id="firstname" required />
                 </div>
  
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" name="lastname" id="lastname" required />
+                </div>
+ 
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" required />
+                </div>
+ 
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required />
+                </div>
+ 
+                <button type='submit' class='btn btn-primary'>Sign Up</button>
+            </form>
+            `;
+ 
+        clearResponse();
+        $('#content').html(html);
+    });
+
+    // show login form
+    $(document).on('click', '#proposerUnTrajet', function(){
+        var html = `
+            <h2>Sign Up</h2>
+            <form id='trajet_form'>
                 <div class="form-group">
                     <label for="lastname">Lastname</label>
                     <input type="text" class="form-control" name="lastname" id="lastname" required />

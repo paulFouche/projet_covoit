@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `password` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_utilisateur`) References utilisateur(id),
   FOREIGN KEY (`id_covoiturage`) References covoiturage(id)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `evenement` (
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `date_debut` datetime NOT NULL,
   `date_fin` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `covoiturage` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
@@ -40,5 +40,5 @@ CREATE TABLE IF NOT EXISTS `covoiturage` (
   `id_evenement` int(255) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_createur`) References utilisateur(id),
-  FOREIGN KEY (`id_covoiturage`) References covoiturage(id)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  FOREIGN KEY (`id_evenement`) References evenement(id)
+) ENGINE=InnoDB;

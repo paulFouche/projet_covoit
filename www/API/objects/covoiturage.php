@@ -3,7 +3,7 @@ class Covoiturage{
  
     // database connection and table name
     private $conn;
-    private $table_name = "covoiturages";
+    private $table_name = "covoiturage";
  
     // object properties
     public $id;
@@ -136,12 +136,7 @@ class Covoiturage{
     public function read(){
     
         //select all data
-        $query = "SELECT
-                    id, id_evenement, id_createur, nb_place, localisation_depart, depart_date
-                FROM
-                    " . $this->table_name . "
-                ORDER BY
-                    id_evenement";
+        $query = "SELECT * FROM " .$this->table_name. " ORDER BY id_evenement";
     
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();

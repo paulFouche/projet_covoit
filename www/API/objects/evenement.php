@@ -19,142 +19,97 @@ class Evenement{
         $this->conn = $db;
     }
 
-    function create(){
-    
-        // insert query
-        $query = "INSERT INTO " . $this->table_name . "
-                SET
-                    nom = :nom,
-                    description = :description,
-                    nb_place = :nb_place,
-                    localisation = :localisation,
-                    date_debut = :date_debut,
-                    date_fin = :date_fin";
-    
-        // prepare the query
-        $stmt = $this->conn->prepare($query);
-    
-        // sanitize
-        $this->nom=htmlspecialchars(strip_tags($this->nom));
-        $this->description=htmlspecialchars(strip_tags($this->description));
-        $this->nb_place=htmlspecialchars(strip_tags($this->nb_place));
-        $this->localisation=htmlspecialchars(strip_tags($this->localisation));
-        $this->date_debut=htmlspecialchars(strip_tags($this->date_debut));
-        $this->date_fin=htmlspecialchars(strip_tags($this->date_fin));
-    
-        // bind the values
-        $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':description', $this->description);
-        $stmt->bindParam(':nb_place', $this->nb_place);
-        $stmt->bindParam(':localisation', $this->localisation);
-        $stmt->bindParam(':date_debut', $this->date_debut);
-        $stmt->bindParam(':date_fin', $this->date_fin);
-    
-        // execute the query, also check if query was successful
-        if($stmt->execute()){
-            return true;
-        }
-    
-        return false;
-    }
- 
-    // emailExists() method will be here
 
-    // check if given event exist in the database
-    function eventExists(){
+    // used when filling up the update product form
+    function readOne(){
     
-        // query to check if event exists
-        $query = "SELECT id, description, nb_place, localisation, date_debut, date_fin
-                FROM " . $this->table_name . "
-                WHERE email = ?
-                LIMIT 0,1";
+        // query to read single record
+        $query = "SELECT
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+                FROM
+                    " . $this->table_name . " p
+                    LEFT JOIN
+                        categories c
+                            ON p.category_id = c.id
+                WHERE
+                    p.id = ?
+                LIMIT
+                    0,1";
     
-        // prepare the query
+        // prepare query statement
         $stmt = $this->conn->prepare( $query );
     
-        // sanitize
-        $this->email=htmlspecialchars(strip_tags($this->nom);
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->id);
     
-        // bind given email value
-        $stmt->bindParam(1, $this->nom);
-    
-        // execute the query
+        // execute query
         $stmt->execute();
     
-        // get number of rows
-        $num = $stmt->rowCount();
+        // get retrieved row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
-        // if email exists, assign values to object properties for easy access and use for php sessions
-        if($num>0){
-    
-            // get record details / values
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            // assign values to object properties
-            $this->description = $row['description'];
-            $this->nb_place = $row['nb_place'];
-            $this->localisation = $row['localisation'];
-            $this->date_debut = $row['date_debut'];
-            $this->date_fin = $row['date_fin'];
-    
-            // return true because email exists in the database
-            return true;
-        }
-    
-        // return false if email does not exist in the database
-        return false;
+        // set values to object properties
+        $this->name = $row['name'];
+        $this->price = $row['price'];
+        $this->description = $row['description'];
+        $this->category_id = $row['category_id'];
+        $this->category_name = $row['category_name'];
     }
-    
-    // update() method will be here
 
-    // update a Evenement record
-    public function update(){
+
+
+
+    // used by select drop-down list
+    public function read(){
     
-        // if nb_place needs to be updated
-        $nb_place_set=!empty($this->nb_place) ? ", nb_place = :nb_place" : "";
+        //select all data
+        $query = "SELECT
+                    id, name, description
+                FROM
+                    " . $this->table_name . "
+                ORDER BY
+                    name";
     
-        // if no posted nb_place, do not update the nb_place
-        $query = "UPDATE " . $this->table_name . "
-                SET
-                    nom = :nom,
-                    description = :description,
-                    localisation = :localisation,
-                    date_debut = :date_debut
-                    date_fin= :date_fin
-                    {$nb_place_set}
-                WHERE id = :id";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
     
-        // prepare the query
+        return $stmt;
+    }
+
+
+
+
+    function search($keywords){
+ 
+        // select all query
+        $query = "SELECT
+                    c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
+                FROM
+                    " . $this->table_name . " p
+                    LEFT JOIN
+                        categories c
+                            ON p.category_id = c.id
+                WHERE
+                    p.name LIKE ? OR p.description LIKE ? OR c.name LIKE ?
+                ORDER BY
+                    p.created DESC";
+     
+        // prepare query statement
         $stmt = $this->conn->prepare($query);
-    
+     
         // sanitize
-        $this->nom=htmlspecialchars(strip_tags($this->nom));
-        $this->description=htmlspecialchars(strip_tags($this->description));
-        $this->localisation=htmlspecialchars(strip_tags($this->localisation));
-        $this->date_debut=htmlspecialchars(strip_tags($this->date_debut));
-        $this->date_fin=htmlspecialchars(strip_tags($this->date_fin));
-    
-        // bind the values from the form
-        $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':description', $this->description);
-        $stmt->bindParam(':localisation', $this->localisation);
-        $stmt->bindParam(':date_debut', $this->date_debut);
-        $stmt->bindParam(':date_fin', $this->date_fin);
-    
-        // hash the nb_place before saving to database
-        if(!empty($this->nb_place)){
-            $stmt->bindParam(':nb_place', $this->nb_place);
-        }
-    
-        // unique ID of record to be edited
-        $stmt->bindParam(':id', $this->id);
-    
-        // execute the query
-        if($stmt->execute()){
-            return true;
-        }
-    
-        return false;
+        $keywords=htmlspecialchars(strip_tags($keywords));
+        $keywords = "%{$keywords}%";
+     
+        // bind
+        $stmt->bindParam(1, $keywords);
+        $stmt->bindParam(2, $keywords);
+        $stmt->bindParam(3, $keywords);
+     
+        // execute query
+        $stmt->execute();
+     
+        return $stmt;
     }
 
     

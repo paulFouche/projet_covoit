@@ -47,19 +47,19 @@ if($jwt){
 		$utilisateur->password = $data->password;
 		$utilisateur->id = $decoded->data->id;
 		 
-		// update the user record
-		if($user->update()){
-		    // we need to re-generate jwt because user details might be different
+		// update the utilisateur record
+		if($utilisateur->update()){
+		    // we need to re-generate jwt because utilisateur details might be different
 			$token = array(
 			   "iss" => $iss,
 			   "aud" => $aud,
 			   "iat" => $iat,
 			   "nbf" => $nbf,
 			   "data" => array(
-			       "id" => $user->id,
-			       "firstname" => $user->firstname,
-			       "lastname" => $user->lastname,
-			       "email" => $user->email
+			       "id" => $utilisateur->id,
+			       "prenom" => $utilisateur->prenom,
+			       "nom" => $utilisateur->nom,
+			       "email" => $utilisateur->email
 			   )
 			);
 			$jwt = JWT::encode($token, $key);
@@ -70,19 +70,19 @@ if($jwt){
 			// response in json format
 			echo json_encode(
 			        array(
-			            "message" => "User was updated.",
+			            "message" => "utilisateur was updated.",
 			            "jwt" => $jwt
 			        )
 			    );
 		}
 		 
-		// message if unable to update user
+		// message if unable to update utilisateur
 		else{
 		    // set response code
 		    http_response_code(401);
 		 
 		    // show error message
-		    echo json_encode(array("message" => "Unable to update user."));
+		    echo json_encode(array("message" => "Unable to update utilisateur."));
 		}
     }
  
@@ -105,7 +105,7 @@ else{
     // set response code
     http_response_code(401);
  
-    // tell the user access denied
+    // tell the utilisateur access denied
     echo json_encode(array("message" => "Access denied."));
 }
 ?>

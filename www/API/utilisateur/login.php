@@ -33,7 +33,7 @@ include_once 'libs/php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
  
 // check if email exists and if password is correct
-if($email_exists && password_verify($data->password, $user->password)){
+if($email_exists && password_verify($data->password, $utilisateur->password)){
  
     $token = array(
        "iss" => $iss,
@@ -41,10 +41,10 @@ if($email_exists && password_verify($data->password, $user->password)){
        "iat" => $iat,
        "nbf" => $nbf,
        "data" => array(
-           "id" => $user->id,
-           "firstname" => $user->firstname,
-           "lastname" => $user->lastname,
-           "email" => $user->email
+           "id" => $utilisateur->id,
+           "prenom" => $utilisateur->prenom,
+           "nom" => $utilisateur->nom,
+           "email" => $utilisateur->email
        )
     );
  
@@ -68,7 +68,7 @@ else{
     // set response code
     http_response_code(401);
  
-    // tell the user login failed
+    // tell the utilisateur login failed
     echo json_encode(array("message" => "Login failed."));
 }
 ?>

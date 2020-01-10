@@ -19,7 +19,7 @@ class Evenement{
         $this->conn = $db;
     }
 
-    // create new user record
+    // create new utilisateur record
     function create(){
     
         // insert query

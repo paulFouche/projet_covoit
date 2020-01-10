@@ -100,7 +100,7 @@ $(document).ready(function(){
      
         // submit form data to api
         $.ajax({
-            url: "api/create_user.php",
+            url: "API/utilisateur/create.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,
@@ -132,7 +132,7 @@ $(document).ready(function(){
      
         // submit form data to api
         $.ajax({
-            url: "api/login.php",
+            url: "API/utilisateur/login.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,
@@ -187,7 +187,7 @@ $(document).ready(function(){
          
         // submit form data to api
         $.ajax({
-            url: "api/update_user.php",
+            url: "API/utilisateur/update.php",
             type : "POST",
             contentType : 'application/json',
             data : form_data,

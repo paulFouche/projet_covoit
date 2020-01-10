@@ -3,7 +3,7 @@ class Reservation{
  
     // database connection and table name
     private $conn;
-    private $table_name = "reservations";
+    private $table_name = "reservation";
  
     // object properties
     public $id;

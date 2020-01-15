@@ -79,8 +79,7 @@ class Reservation{
         // query to read single record
         $query = "SELECT
                     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-                FROM
-                    " . $this->table_name . " p
+                FROM " . $this->table_name . " p
                     LEFT JOIN
                         categories c
                             ON p.category_id = c.id
@@ -118,8 +117,7 @@ class Reservation{
         //select all data
         $query = "SELECT
                     id, name, description
-                FROM
-                    " . $this->table_name . "
+                FROM " . $this->table_name . "
                 ORDER BY
                     name";
     
@@ -137,8 +135,7 @@ class Reservation{
         // select all query
         $query = "SELECT
                     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-                FROM
-                    " . $this->table_name . " p
+                FROM " . $this->table_name . " p
                     LEFT JOIN
                         categories c
                             ON p.category_id = c.id
@@ -171,7 +168,7 @@ class Reservation{
     
         // update query
         $query = "UPDATE
-                    " . $this->table_name . "
+                    " . $this->table_name . " 
                 SET
                     name = :name,
                     price = :price,

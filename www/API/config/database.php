@@ -2,10 +2,10 @@
 class Database{
  
     // specify your own database credentials
-    private $host = "paulfoucjsazerty.mysql.db";
-    private $db_name = "paulfoucjsazerty";
-    private $utilisateurname = "paulfoucjsazerty";
-    private $password = "7r5XEz4y3HVrM32k";
+    private $host = "localhost";
+    private $db_name = "covevent";
+    private $utilisateurname = "root";
+    private $password = "root";
     public $conn;
  
     // get the database connection

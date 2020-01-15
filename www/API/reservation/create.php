@@ -10,12 +10,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../config/database.php';
  
 // instantiate product object
-include_once '../objects/product.php';
+include_once '../objects/reservation.php';
  
 $database = new Database();
 $db = $database->getConnection();
  
-$product = new Product($db);
+$product = new Reservation($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));

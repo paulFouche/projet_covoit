@@ -15,7 +15,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new Product($db);
+$product = new Covoiturage($db);
  
 // set ID property of record to read
 $product->id = isset($_GET['id']) ? $_GET['id'] : die();

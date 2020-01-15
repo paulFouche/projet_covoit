@@ -13,7 +13,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$product = new Product($db);
+$product = new Covoiturage($db);
  
 // get keywords
 $keywords=isset($_GET["s"]) ? $_GET["s"] : "";

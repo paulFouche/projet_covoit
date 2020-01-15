@@ -5,14 +5,14 @@ header("Content-Type: application/json; charset=UTF-8");
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/category.php';
+include_once '../objects/evenement.php';
  
 // instantiate database and category object
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$category = new Category($db);
+$category = new Evenement($db);
  
 // query categorys
 $stmt = $category->read();

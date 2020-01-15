@@ -15,7 +15,7 @@ $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new Product($db);
+$product = new Covoiturage($db);
  
 // get product id
 $data = json_decode(file_get_contents("php://input"));

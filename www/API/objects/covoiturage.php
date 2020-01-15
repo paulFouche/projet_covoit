@@ -22,9 +22,10 @@ class Covoiturage{
 
     // create new Evenement record
     function create(){
-    
+        
+
         // insert query
-        $query = "INSERT INTO " . $this->table_name . "
+        $query = "INSERT INTO " .$this->table_name. "
                 SET
                     localisation_depart = :localisation_depart,
                     depart_date = :depart_date,
@@ -35,8 +36,9 @@ class Covoiturage{
                     id_createur = :id_createur";
     
         // prepare the query
-        $stmt = $this->conn->prepare($query);
-    
+        
+        $stmt = $this->conn->prepare( $query );
+
         // sanitize
         $this->localisation_depart=htmlspecialchars(strip_tags($this->localisation_depart));
         $this->depart_date=htmlspecialchars(strip_tags($this->depart_date));
@@ -46,6 +48,17 @@ class Covoiturage{
         $this->id_evenement=htmlspecialchars(strip_tags($this->id_evenement));
         $this->id_createur=htmlspecialchars(strip_tags($this->id_createur));
     
+        echo $this->depart_date;
+        echo "----";
+        echo $this->nb_place;
+        echo "----";
+        echo $this->localisation_arrive;
+        echo "----";
+        echo $this->prix;
+        echo "----";
+        echo $this->id_evenement;
+        echo "----";
+        echo $this->id_createur;
         // bind the values
         $stmt->bindParam(':localisation_depart', $this->localisation_depart);
         $stmt->bindParam(':depart_date', $this->depart_date);
@@ -54,12 +67,14 @@ class Covoiturage{
         $stmt->bindParam(':prix', $this->prix);
         $stmt->bindParam(':id_evenement', $this->id_evenement);
         $stmt->bindParam(':id_createur', $this->id_createur);
-    
+        
         // execute the query, also check if query was successful
         if($stmt->execute()){
             return true;
+            echo "execute";
         }
-    
+        
+        echo "no execute";
         return false;
     }
 
@@ -67,7 +82,7 @@ class Covoiturage{
      function delete(){
     
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $query = "DELETE FROM " .$this->table_name. " WHERE id = ?";
     
         // prepare query
         $stmt = $this->conn->prepare($query);

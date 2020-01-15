@@ -15,11 +15,14 @@ include_once '../objects/covoiturage.php';
 $database = new Database();
 $db = $database->getConnection();
  
-$product = new Product($db);
+$product = new Covoiturage($db);
+
+
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
- 
+
+
 // make sure data is not empty
 if(
     !empty($data->localisation_depart) &&
@@ -30,7 +33,7 @@ if(
     !empty($data->id_evenement) &&
     !empty($data->id_createur)
 ){
- 
+    
     // set product property values
     $product->localisation_depart = $data->localisation_depart;
     $product->depart_date = $data->depart_date;
@@ -39,7 +42,7 @@ if(
     $product->prix = $data->prix;
     $product->id_evenement = $data->id_evenement;
     $product->id_createur = $data->id_createur;
-    $product->created = date('Y-m-d H:i:s');
+    
  
     // create the product
     if($product->create()){

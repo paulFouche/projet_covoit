@@ -8,14 +8,14 @@ header('Content-Type: application/json');
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/product.php';
+include_once '../objects/evenement.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new Product($db);
+$product = new Evenement($db);
  
 // set ID property of record to read
 $product->id = isset($_GET['id']) ? $_GET['id'] : die();

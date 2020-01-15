@@ -15,7 +15,7 @@ include_once '../objects/covoiturage.php';
 $database = new Database();
 $db = $database->getConnection();
  
-$product = new Product($db);
+$product = new Covoiturage($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));

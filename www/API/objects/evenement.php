@@ -26,8 +26,7 @@ class Evenement{
         // query to read single record
         $query = "SELECT
                     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-                FROM
-                    " . $this->table_name . " p
+                FROM " .$this->table_name. " p
                     LEFT JOIN
                         categories c
                             ON p.category_id = c.id
@@ -65,8 +64,7 @@ class Evenement{
         //select all data
         $query = "SELECT
                     id, name, description
-                FROM
-                    " . $this->table_name . "
+                FROM " . $this->table_name . "
                 ORDER BY
                     name";
     
@@ -84,8 +82,7 @@ class Evenement{
         // select all query
         $query = "SELECT
                     c.name as category_name, p.id, p.name, p.description, p.price, p.category_id, p.created
-                FROM
-                    " . $this->table_name . " p
+                FROM " . $this->table_name . " p
                     LEFT JOIN
                         categories c
                             ON p.category_id = c.id

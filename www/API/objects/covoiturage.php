@@ -24,8 +24,7 @@ class Covoiturage{
     function create(){
     
         // insert query
-        $query = "INSERT INTO " . $this->table_name . "
-                SET
+        $query = "INSERT INTO " . $this->table_name . " SET 
                     localisation_depart = :localisation_depart,
                     depart_date = :depart_date,
                     nb_place = :nb_place,
@@ -96,8 +95,7 @@ class Covoiturage{
         // query to read single record
         $query = "SELECT
                     e.event as id_evenement, c.id, c.localisation_depart, c.depart_date, c.nb_place, c.localisation_arrive, c.prix, c.id_createur
-                FROM
-                    " . $this->table_name . " c
+                FROM " . $this->table_name . " c
                     LEFT JOIN
                         categories e
                             ON c.category_id = e.id
@@ -152,8 +150,7 @@ class Covoiturage{
         // select all query
         $query = "SELECT
                     e.event as id_evenement, c.localisation_depart, c.depart_date, c.nb_place, c.localisation_arrive, c.prix
-                FROM
-                    " . $this->table_name . " c
+                FROM " . $this->table_name . " c
                     LEFT JOIN
                         categories e
                             ON c.category_id = e.id
@@ -185,9 +182,7 @@ class Covoiturage{
     function update(){
     
         // update query
-        $query = "UPDATE
-                    " . $this->table_name . "
-                SET
+        $query = "UPDATE " . $this->table_name . " SET
                     localisation_depart = :localisation_depart,
                     depart_date = :depart_date,
                     nb_place = :nb_place,

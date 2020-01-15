@@ -6,14 +6,14 @@ header("Content-Type: application/json; charset=UTF-8");
 // include database and object files
 include_once '../config/core.php';
 include_once '../config/database.php';
-include_once '../objects/product.php';
+include_once '../objects/evenement.php';
  
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$product = new Product($db);
+$product = new Evenement($db);
  
 // get keywords
 $keywords=isset($_GET["s"]) ? $_GET["s"] : "";

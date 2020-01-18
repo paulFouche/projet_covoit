@@ -25,8 +25,7 @@ class Covoiturage{
         
 
         // insert query
-        $query = "INSERT INTO " .$this->table_name. "
-                SET
+        $query = "INSERT INTO " .$this->table_name. " SET 
                     localisation_depart = :localisation_depart,
                     depart_date = :depart_date,
                     nb_place = :nb_place,
@@ -36,7 +35,7 @@ class Covoiturage{
                     id_createur = :id_createur";
     
         // prepare the query
-        
+        echo $query;
         $stmt = $this->conn->prepare( $query );
 
         // sanitize

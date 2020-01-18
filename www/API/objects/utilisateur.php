@@ -22,28 +22,28 @@ class Utilisateur{
 function create(){
  
     // insert query
-    $query = "INSERT INTO " . $this->table_name . "
-            SET
+    $query = "INSERT INTO " . $this->table_name . " SET 
                 prenom = :prenom,
                 nom = :nom,
                 email = :email,
                 password = :password";
  
     // prepare the query
+    echo $query;
     $stmt = $this->conn->prepare($query);
  
     // sanitize
     $this->prenom=htmlspecialchars(strip_tags($this->prenom));
     $this->nom=htmlspecialchars(strip_tags($this->nom));
     $this->email=htmlspecialchars(strip_tags($this->email));
-    $this->tel=htmlspecialchars(strip_tags($this->tel));
+    //$this->tel=htmlspecialchars(strip_tags($this->tel));
     $this->password=htmlspecialchars(strip_tags($this->password));
  
     // bind the values
     $stmt->bindParam(':prenom', $this->prenom);
     $stmt->bindParam(':nom', $this->nom);
     $stmt->bindParam(':email', $this->email);
-    $stmt->bindParam(':tel', $this->tel);
+    //$stmt->bindParam(':tel', $this->tel);
  
     // hash the password before saving to database
     $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
@@ -62,8 +62,7 @@ function emailExists(){
  
     // query to check if email exists
     $query = "SELECT id, prenom, nom, password
-            FROM " . $this->table_name . "
-            WHERE email = ?
+            FROM " . $this->table_name . " WHERE email = ?
             LIMIT 0,1";
  
     // prepare the query

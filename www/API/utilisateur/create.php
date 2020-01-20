@@ -9,8 +9,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // database connection will be here
 
 // files needed to connect to database
-include_once 'config/database.php';
-include_once 'objects/utilisateur.php';
+include_once '../config/database.php';
+include_once '../objects/utilisateur.php';
  
 // get database connection
 $database = new Database();
@@ -29,7 +29,7 @@ $utilisateur->prenom = $data->prenom;
 $utilisateur->nom = $data->nom;
 $utilisateur->email = $data->email;
 $utilisateur->password = $data->password;
-$utilisateur->tel = $data->tel;
+//$utilisateur->tel = $data->tel;
 
 // create the utilisateur
 if(
@@ -37,7 +37,7 @@ if(
     !empty($utilisateur->email) &&
     !empty($utilisateur->password) &&
     !empty($utilisateur->nom) &&
-    !empty($utilisateur->tel) &&
+    //!empty($utilisateur->tel) &&
     $utilisateur->create()
 ){
  

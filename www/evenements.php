@@ -22,7 +22,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Account</a>
+      <a class="navbar-brand" href="#">Evenement</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,16 +33,16 @@
             <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="evenements.php">Voir les événements</a>
+            <a class="nav-link" href="#">Voir les événements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="covoit.php">Proposer un covoit'</a>
+            <a class="nav-link" href="#">Proposer un covoit'</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="account.php">Mon compte</a>
+            <a class="nav-link" href="#">Mon compte</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">Connexion</a>
+            <a class="nav-link" href="login.php">Déconnexion</a>
           </li>
         </ul>
       </div>

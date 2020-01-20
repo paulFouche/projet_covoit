@@ -59,19 +59,45 @@
     <title>CovEvent</title>
   </head>
   <body>
-    <form class="form-signin">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Login</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="evenements.php">Voir les événements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="covoit.php">Proposer un covoit'</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="account.php">Mon compte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <form class="form-signin" action="login_script.php" method="POST">
       <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" id='submit' value='Sign in'>
       <p class="mt-5 mb-3 text-muted">2020 - CovEvent Inc.s</p>
     </form>
 

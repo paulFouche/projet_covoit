@@ -1,0 +1,51 @@
+<?php
+
+// files needed to connect to database
+include_once '../API/config/database.php';
+include_once '../API/objects/utilisateur.php';
+
+session_start();
+echo "hello ici";
+if(isset($_POST['email']) && isset($_POST['password']))
+{
+    echo "hello";
+    $db_username = 'paulfoucjsazerty';
+    $db_password = '7r5XEz4y3HVrM32k';
+    $db_name     = 'paulfoucjsazerty';
+    $db_host     = 'paulfoucjsazerty.mysql.db';
+    $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
+           or die('could not connect to database');
+    
+    // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
+    // pour éliminer toute attaque de type injection SQL et XSS
+    $email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email'])); 
+    $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
+    echo $email;
+    if($email !== "" && $password !== "")
+    {
+        $requete = "SELECT count(*), id FROM utilisateur WHERE email = '".$email."' and password = '".$password."' ";
+        echo $requete;
+        $exec_requete = mysqli_query($db,$requete);
+        $reponse      = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        $numUtilisateur = $reponse['id'];
+        
+        if($count!=0) // nom d'utilisateur et mot de passe correctes
+        {
+            header('Location: account.php');
+        }
+        else
+        {
+           header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect
+        }
+    }
+    else
+    {
+       header('Location: index.php?erreur=2'); // utilisateur ou mot de passe vide
+    }
+}
+else
+{
+   header('Location: index.php');
+}
+?>

@@ -102,7 +102,7 @@
         </div>
         <div class="modal-body">
           Veuiller confirmer votre réservation pour le trajet :
-          
+          <div id="currentSelection"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
@@ -125,6 +125,7 @@
 <script>
     console.log("test")
     var listCovoits = [];
+    var currentCovoitId
     
     var settings = {
       "url": "http://localhost/projetCovoit/www/API/covoiturage/read.php",
@@ -139,7 +140,7 @@
     });
 
     function displayCovoit(){
-        listCovoits.forEach(function(item){
+        listCovoits.forEach(function(item,index){
           console.log(item)
           if (item.nb_place > 0 ){
             var textHtml = '<div class="col-lg-4 col-md-6 mb-4 my-4">'
@@ -149,16 +150,26 @@
                             +       '<a href="#">'+ item.localisation_depart + ' - '+ item.localisation_arrive +'</a>'
                             +     '</h4>'
                             +     '<h5>'+ item.prix +' €</h5>'
-                            +     '<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>'
+                            +     '<p class="card-text"> date : ' + item.depart_date + '</p>'
                             +   '</div>'
                             +   '<div class="card-footer">'
                             +     '<small class="text-muted">' + item.nb_place + ' places disponibles</small>'
                             +   '</div>'
-                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Réserver</button>'
+                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setCurrent('+ index +')">Réserver</button>'
                             + '</div>'
                             + '</div>'
             }
             document.getElementById("covoits").innerHTML += textHtml
         });
+        var current = document.getElementById("covoits").innerHTML
+        document.getElementById("covoits").innerHTML = current + current + current + current
+    }
+
+    function setCurrent(index){
+      currentCovoitId = listCovoits[index].id
+      document.getElementById("currentSelection").innerHTML =  listCovoits[index].localisation_depart 
+                                                              + ' - '+ listCovoits[index].localisation_arrive
+                                                              + ' <br> prix : ' + listCovoits[index].prix
+                                                              + ' € <br> date : ' + listCovoits[index].depart_date
     }
 </script>

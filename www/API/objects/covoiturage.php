@@ -48,17 +48,6 @@ class Covoiturage{
         $this->id_evenement=htmlspecialchars(strip_tags($this->id_evenement));
         $this->id_createur=htmlspecialchars(strip_tags($this->id_createur));
     
-        echo $this->depart_date;
-        echo "----";
-        echo $this->nb_place;
-        echo "----";
-        echo $this->localisation_arrive;
-        echo "----";
-        echo $this->prix;
-        echo "----";
-        echo $this->id_evenement;
-        echo "----";
-        echo $this->id_createur;
         // bind the values
         $stmt->bindParam(':localisation_depart', $this->localisation_depart);
         $stmt->bindParam(':depart_date', $this->depart_date);
@@ -78,11 +67,12 @@ class Covoiturage{
         return false;
     }
 
+
      // delete the product
      function delete(){
     
         // delete query
-        $query = "DELETE FROM " .$this->table_name. " WHERE id = ?";
+        $query = "DELETE FROM " .$this->table_name. " WHERE id = :id";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -91,7 +81,7 @@ class Covoiturage{
         $this->id=htmlspecialchars(strip_tags($this->id));
     
         // bind id of record to delete
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(":id", $this->id);
     
         // execute query
         if($stmt->execute()){

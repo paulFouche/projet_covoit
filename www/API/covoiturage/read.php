@@ -42,7 +42,7 @@ if($num>0){
             "nb_place" => $nb_place,
             "localisation_depart" => $localisation_depart,
             "depart_date" => $depart_date,
-            "localisation_arrive" => $localisation_depart,
+            "localisation_arrive" => $localisation_arrive,
             "prix" => $prix,
             //"description" => html_entity_decode($description)
         );

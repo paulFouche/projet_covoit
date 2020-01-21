@@ -44,6 +44,7 @@ if($num>0){
             "depart_date" => $depart_date,
             "localisation_arrive" => $localisation_arrive,
             "prix" => $prix,
+            "nom_evenement" => $nom,
             //"description" => html_entity_decode($description)
         );
  

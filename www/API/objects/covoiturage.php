@@ -139,7 +139,7 @@ class Covoiturage{
     public function read(){
     
         //select all data
-        $query = "SELECT * FROM " .$this->table_name. " ORDER BY id_evenement";
+        $query = "SELECT covoiturage.*,evenement.nom  FROM covoiturage,evenement WHERE covoiturage.id_evenement = evenement.id ORDER BY id_evenement";
     
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
@@ -218,6 +218,57 @@ class Covoiturage{
         $stmt->bindParam(':prix', $this->prix);
         $stmt->bindParam(':id_evenement', $this->id_evenement);
         $stmt->bindParam(':id_createur', $this->id_createur);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
+
+    function updateReservationMoins(){
+    
+        // update query
+        $query = "UPDATE " . $this->table_name . " SET
+                    nb_place = nb_place - 1
+                WHERE
+                    id = :id";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+       // sanitize
+       $this->id=htmlspecialchars(strip_tags($this->id));
+    
+       // bind id of record to delete
+       $stmt->bindParam(":id", $this->id);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
+    function updateReservationPlus(){
+    
+        // update query
+        $query = "UPDATE " . $this->table_name . " SET
+                    nb_place = nb_place + 1
+                WHERE
+                    id = :id";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+       // sanitize
+       $this->id=htmlspecialchars(strip_tags($this->id));
+    
+       // bind id of record to delete
+       $stmt->bindParam(":id", $this->id);
     
         // execute the query
         if($stmt->execute()){

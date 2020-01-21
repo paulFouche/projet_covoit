@@ -6,9 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>CovEvent</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/dashboard/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -41,8 +41,9 @@
       }
     </style>
     <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">CovEvent</a>
@@ -67,71 +68,68 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky" style="margin-top: 14%; width: 100vh">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              Mes informations <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Mes reservations
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Mes covoiturages
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="informations">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Mes informations</h1>
-      </div>
-    </main>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="reservations">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Mes informations</h1>
-      </div>
-    </main>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="covoiturages">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Mes informations</h1>
-      </div>
-    </main>
-
+    
+    <div class="container" style="margin-top: 4%">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h2>Creer un covoiturage</h2>
+    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
   </div>
-</div>
 
+  <div class="row justify-content-md-center">
+    <form class="form-signin" action="create_covoiturage_script.php" method="POST">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Inscription</h4>
+
+        <select id="locality-dropdown" name="lieu"></select>
+
+        <div class="mb-3">
+          <label for="address">Lieu de départ</label>
+          <input type="text" class="form-control" id="localisation_adepart" name="localisation_depart" placeholder="Angers" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Lieu d'arrivée</label>
+          <input type="text" class="form-control" id="localisation_arrive" name="localisation_arrive" placeholder="Angers" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Date de départ</label>
+            <input type="date" class="form-control" id="depart_date" name="depart_date" placeholder="" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Date de retour</label>
+            <input type="date" class="form-control" id="retour_date" name="retour_date" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Nombre de place passager</label>
+            <input type="text" class="form-control" id="nb_place" name="nb_place" placeholder="" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Prix du covoiturage</label>
+            <input type="text" class="form-control" id="prix" name="prix" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <input class="btn btn-primary btn-lg btn-block" type="submit" id='submit' value='Proposer mon covoiturage'>
+      </form>
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017-2019 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script>
@@ -165,8 +163,5 @@
 
       </script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-      <script src="dashboard.js"></script></body>
 </html>
 

@@ -29,6 +29,7 @@ $utilisateur->prenom = $data->prenom;
 $utilisateur->nom = $data->nom;
 $utilisateur->email = $data->email;
 $utilisateur->password = $data->password;
+$utilisateur->password = $data->tel;
 //$utilisateur->tel = $data->tel;
 
 // create the utilisateur
@@ -37,7 +38,7 @@ if(
     !empty($utilisateur->email) &&
     !empty($utilisateur->password) &&
     !empty($utilisateur->nom) &&
-    //!empty($utilisateur->tel) &&
+    !empty($utilisateur->tel) &&
     $utilisateur->create()
 ){
  

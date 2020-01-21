@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if(isset($_POST['email']) && isset($_POST['password']))
+if(isset($_POST['nb_place']) && isset($_POST['prix']))
 {
     $db_username = 'paulfoucjsazerty';
     $db_password = '7r5XEz4y3HVrM32k';
@@ -12,23 +12,27 @@ if(isset($_POST['email']) && isset($_POST['password']))
     
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
-    $prenom = mysqli_real_escape_string($db,htmlspecialchars($_POST['firstname'])); 
-    $nom = mysqli_real_escape_string($db,htmlspecialchars($_POST['lastname']));
-    $email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email']));
-    $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-    $tel = mysqli_real_escape_string($db,htmlspecialchars($_POST['tel']));
-
-    if($email !== "" && $password !== "")
+    $id_event = mysqli_real_escape_string($db,htmlspecialchars($_POST['lieu'])); 
+    echo $id_event;
+    $localisation_depart = mysqli_real_escape_string($db,htmlspecialchars($_POST['localisation_depart']));
+    $localisation_arrive = mysqli_real_escape_string($db,htmlspecialchars($_POST['localisation_arrive']));
+    $depart_date = mysqli_real_escape_string($db,htmlspecialchars($_POST['depart_date']));
+    $prix = mysqli_real_escape_string($db,htmlspecialchars($_POST['prix']));
+    $nb_place = mysqli_real_escape_string($db,htmlspecialchars($_POST['nb_place']));
+    
+    if($nb_place !== "" && $prix !== "")
     {
         //next example will insert new conversation
-        $service_url = 'http://dev.paul-fouche.com/API/utilisateur/create.php';
+        $service_url = 'http://dev.paul-fouche.com/API/covoiturage/create.php';
         $curl = curl_init($service_url);
         $curl_post_data = array(
-                'prenom' => $prenom,
-                'nom' => $nom,
-                'email' => $email,
-                'password' => $password,
-                'tel' => $tel
+                'id_createur' => 1,
+                'id_evenement' => $id_event,
+                'localisation_arrive' => $localisation_arrive,
+                'localisation_depart' => $localisation_depart,
+                'depart_date' => $depart_date,
+                'prix' => $prix,
+                'nb_place' => $nb_place
         );
         echo  json_encode($curl_post_data);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -40,13 +44,13 @@ if(isset($_POST['email']) && isset($_POST['password']))
             $info = curl_getinfo($curl);
             curl_close($curl);
             die('error occured during curl exec. Additioanl info: ' . var_export($info));
-            header('Location: index.php');
+            //header('Location: index.php');
         }
         curl_close($curl);
         $decoded = json_decode($curl_response);
         if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
             die('error occured: ' . $decoded->response->errormessage);
-            header('Location: index.php');
+            //header('Location: index.php');
         }
         echo 'response ok!';
         var_export($decoded->response);
@@ -59,6 +63,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
 }
 else
 {
-   header('Location: index.php');
+   header('Location: index.php?erreur=1');
 }
 ?>

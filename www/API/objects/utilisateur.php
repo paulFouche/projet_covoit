@@ -26,7 +26,8 @@ function create(){
                 prenom = :prenom,
                 nom = :nom,
                 email = :email,
-                password = :password";
+                password = :password,
+                tel = :tel";
  
     // prepare the query
     echo $query;
@@ -36,18 +37,19 @@ function create(){
     $this->prenom=htmlspecialchars(strip_tags($this->prenom));
     $this->nom=htmlspecialchars(strip_tags($this->nom));
     $this->email=htmlspecialchars(strip_tags($this->email));
-    //$this->tel=htmlspecialchars(strip_tags($this->tel));
     $this->password=htmlspecialchars(strip_tags($this->password));
+    $this->tel=htmlspecialchars(strip_tags($this->tel));
  
     // bind the values
     $stmt->bindParam(':prenom', $this->prenom);
     $stmt->bindParam(':nom', $this->nom);
     $stmt->bindParam(':email', $this->email);
-    //$stmt->bindParam(':tel', $this->tel);
  
     // hash the password before saving to database
-    $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password_hash);
+    //$password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+    //$stmt->bindParam(':password', $password_hash);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':tel', $tel);
  
     // execute the query, also check if query was successful
     if($stmt->execute()){

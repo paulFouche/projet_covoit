@@ -62,11 +62,7 @@ class Evenement{
     public function read(){
     
         //select all data
-        $query = "SELECT
-                    id, name, description
-                FROM " . $this->table_name . "
-                ORDER BY
-                    name";
+        $query = "SELECT id, nom, description FROM " . $this->table_name . " ORDER BY nom";
     
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();

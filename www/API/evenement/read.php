@@ -23,7 +23,7 @@ if($num>0){
  
     // products array
     $categories_arr=array();
-    $categories_arr["records"]=array();
+    $categories_arr["evenements"]=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -36,11 +36,11 @@ if($num>0){
  
         $category_item=array(
             "id" => $id,
-            "name" => $name,
-            "description" => html_entity_decode($description)
+            "nom" => $nom,
+            "description" => $description
         );
  
-        array_push($categories_arr["records"], $category_item);
+        array_push($categories_arr["evenements"], $category_item);
     }
  
     // set response code - 200 OK

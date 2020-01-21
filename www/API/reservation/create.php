@@ -22,18 +22,13 @@ $data = json_decode(file_get_contents("php://input"));
  
 // make sure data is not empty
 if(
-    !empty($data->name) &&
-    !empty($data->price) &&
-    !empty($data->description) &&
-    !empty($data->category_id)
+    !empty($data->id_utilisateur) &&
+    !empty($data->id_covoiturage) 
 ){
  
     // set product property values
-    $product->name = $data->name;
-    $product->price = $data->price;
-    $product->description = $data->description;
-    $product->category_id = $data->category_id;
-    $product->created = date('Y-m-d H:i:s');
+    $product->id_utilisateur = $data->id_utilisateur;
+    $product->id_covoiturage = $data->id_covoiturage;
  
     // create the product
     if($product->create()){

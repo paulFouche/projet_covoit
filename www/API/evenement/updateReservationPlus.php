@@ -6,34 +6,25 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
-// include database and object files
+// include database and object file
 include_once '../config/database.php';
-include_once '../objects/covoiturage.php';
+include_once '../objects/evenement.php';
  
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
  
 // prepare product object
-$product = new Covoiturage($db);
+$product = new Evenement($db);
  
-// get id of product to be edited
+// get product id
 $data = json_decode(file_get_contents("php://input"));
  
-// set ID property of product to be edited
+// set product id to be updated
 $product->id = $data->id;
  
-// set product property values
-$product->localisation_depart = $data->localisation_depart;
-$product->depart_date = $data->depart_date;
-$product->nb_place = $data->nb_place;
-$product->localisation_arrive = $data->localisation_arrive;
-$product->prix = $data->prix;
-$product->id_evenement = $data->id_evenement;
-$product->id_createur = $data->id_createur;
-
-// update the product
-if($product->update()){
+// delete the product
+if($product->updateReservationPlus()){
  
     // set response code - 200 ok
     http_response_code(200);
@@ -42,7 +33,7 @@ if($product->update()){
     echo json_encode(array("message" => "Product was updated."));
 }
  
-// if unable to update the product, tell the user
+// if unable to update the product
 else{
  
     // set response code - 503 service unavailable

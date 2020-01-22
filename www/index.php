@@ -26,15 +26,67 @@
     require('view/header.php'); 
     ?>
 
-    <main role="main" class="container">
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="public/images/02.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">Allez aux plus grands festivals!</h2>
+            <p>Rassemblez-vous lors d'un covoiturage afin d'économiser de l'argent et partager un moment avec les même fans que vous</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
 
-    </main><!-- /.container -->
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="public/images/03.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">Ne ratez pas un évènement !</h2>
+            <p>Ne laissez pas le trajet devenir l'ennemie de vos passion, grâce à Covevent vous pouvez tout faire !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- /.container -->
 
+  <?php include 'view/footer.php'; ?>
+
+  <?php
+      $to      = "julien.bardin@reseau.eseo.fr";
+      $subject = "votre reservation";
+      $message = "c'est good baby";
+      $headers = array(
+          'From' => 'julien@bardin.me',
+          'Reply-To' => 'julien@bardin.me',
+          'X-Mailer' => 'PHP/' . phpversion()
+      );
+
+      echo '<script>console.log("email here")</script>';
+
+      if(mail($to, $subject, $message, $headers))
+      {
+              echo "<script>console.log(L'email a bien été envoyé.</script>";
+      }
+      else
+      {
+              echo "<script>console.log(Une erreur c'est produite lors de l'envois de l'email.</script>";
+      }
+      ?>
+      
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

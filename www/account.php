@@ -87,6 +87,10 @@
         //echo $id;
 
         $_SESSION["id"] = $id;
+
+        if ($_SESSION["email"]==null){
+          header('Location: index.php');
+        }
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">

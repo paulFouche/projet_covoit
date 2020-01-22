@@ -43,6 +43,17 @@
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
   </head>
+  <?php
+    session_start();
+    $email = $_SESSION["email"];
+    $tel = $_SESSION["tel"];
+    $id = $_SESSION["id"];
+
+    if ($_SESSION["email"]==null){
+      header('Location: index.php');
+    }
+
+  ?>
   <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -68,7 +79,7 @@
         </div>
       </div>
     </nav>
-    
+
     <div class="container" style="margin-top: 4%">
   <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">

@@ -18,7 +18,7 @@
     if($_SESSION["email"]!=null){ // session active
         echo "<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top' style='background-color:#112233;'>
             <div class='container'>
-              <a class='navbar-brand' href='#'><img src='public/images/covevent.png' style='width:12rem;height:2.8rem;'></a>
+              <a class='navbar-brand' href='index.php'><img src='public/images/covevent.png' style='width:12rem;height:2.8rem;'></a>
               <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
                 <span class='navbar-toggler-icon'></span>
               </button>
@@ -46,12 +46,15 @@
     }else{
         echo "<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
                   <div class='container'>
-                  <a class='navbar-brand' href='#'><img src='public/images/covevent.png' style='width:12rem;height:2.8rem;'></a>
+                  <a class='navbar-brand' href='index.php'><img src='public/images/covevent.png' style='width:12rem;height:2.8rem;'></a>
                   <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
                       <span class='navbar-toggler-icon'></span>
                     </button>
                     <div class='collapse navbar-collapse' id='navbarResponsive'>
                       <ul class='navbar-nav ml-auto'>
+                      <li class='nav-item'>
+                        <a class='nav-link' href='index.php'>Accueil</a>
+                    </li>
                         <li class='nav-item'>
                           <a class='nav-link' href='inscription.php'>Inscription</a>
                         </li>

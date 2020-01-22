@@ -146,7 +146,7 @@
     }
     
     var settings = {
-      "url": "http://dev.paul-fouche.com//www/API/covoiturage/read.php",
+      "url": "http://dev.paul-fouche.com/API/covoiturage/read.php",
       "method": "GET",
       "timeout": 0,
     };
@@ -204,8 +204,6 @@
           }
           
         });
-        var current = document.getElementById("covoits").innerHTML
-        document.getElementById("covoits").innerHTML = current + current + current + current
 
         console.log(navbar)
     }
@@ -309,7 +307,7 @@
     function covoiturageConfirme(){
 
       var settingsCovoit = {
-        "url": "http://dev.paul-fouche.com//www/API/covoiturage/updateReservationMoins.php",
+        "url": "http://dev.paul-fouche.com/API/covoiturage/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -323,7 +321,7 @@
       });
 
       var settingsEvent = {
-        "url": "http://dev.paul-fouche.com//www/API/evenement/updateReservationMoins.php",
+        "url": "http://dev.paul-fouche.com/API/evenement/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -337,7 +335,7 @@
       });
 
       var settings = {
-        "url": "http://dev.paul-fouche.com//www/API/reservation/create.php",
+        "url": "http://dev.paul-fouche.com/API/reservation/create.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -349,7 +347,7 @@
       $.ajax(settings).done(function (response) {
         console.log(response);
         console.log("c'est réservé")
-        document.location.href="index.html"
+        document.location.href="index.php"
       });
 
     }

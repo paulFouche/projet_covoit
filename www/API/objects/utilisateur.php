@@ -18,6 +18,65 @@ class Utilisateur{
     public function __construct($db){
         $this->conn = $db;
     }
+
+// used when filling up the update product form
+function readOne($id){
+
+
+     // query to read single record
+    $query = "SELECT * FROM ".$this->table_name." WHERE id=".$id." ";
+    // prepare query statement
+    $stmt = $this->conn->prepare( $query );
+
+    // bind id of product to be updated
+    $stmt->bindParam(1, $this->id);
+
+    // execute query
+    $stmt->execute();
+
+    // get retrieved row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // set values to object properties
+    $this->id = $row['id'];
+    $this->prenom = $row['prenom'];
+    $this->nom = $row['nom'];
+    $this->email = $row['email'];
+    $this->tel = $row['tel'];
+
+}
+
+// used when filling up the update product form
+function readOneByEmail($email, $tel){
+
+
+     // query to read single record
+    $query = "SELECT * FROM ".$this->table_name." WHERE email='".$email."' AND tel='".$tel."'   ";
+    // prepare query statement
+    $stmt = $this->conn->prepare( $query );
+
+    // bind id of product to be updated
+    $stmt->bindParam(1, $this->id);
+
+    // execute query
+    $stmt->execute();
+
+    // get retrieved row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // set values to object properties
+    $this->id = $row['id'];
+    $this->prenom = $row['prenom'];
+    $this->nom = $row['nom'];
+    $this->email = $row['email'];
+    $this->tel = $row['tel'];
+
+}
+
+
+
+
+
  
 function create(){
  
@@ -30,7 +89,6 @@ function create(){
                 tel = :tel";
  
     // prepare the query
-    echo $query;
     $stmt = $this->conn->prepare($query);
  
     // sanitize
@@ -48,8 +106,8 @@ function create(){
     // hash the password before saving to database
     //$password_hash = password_hash($this->password, PASSWORD_BCRYPT);
     //$stmt->bindParam(':password', $password_hash);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':tel', $tel);
+    $stmt->bindParam(':password', $this->password);
+    $stmt->bindParam(':tel', $this->tel);
  
     // execute the query, also check if query was successful
     if($stmt->execute()){

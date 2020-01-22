@@ -18,10 +18,10 @@ $db = $database->getConnection();
 $product = new Utilisateur($db);
  
 // set ID property of record to read
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
-
+$product->email = isset($_GET['email']) ? $_GET['email'] : die();
+$product->tel = isset($_GET['tel']) ? $_GET['tel'] : die();
 // read the details of product to be edited
-$product->readOne($_GET['id']);
+$product->readOneByEmail($_GET['email'], $_GET['tel']);
  
 if($product->nom!=null){
     // create array

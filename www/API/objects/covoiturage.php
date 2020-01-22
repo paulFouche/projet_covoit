@@ -101,13 +101,13 @@ class Covoiturage{
         $query = "SELECT
                     e.event as id_evenement, c.id, c.localisation_depart, c.depart_date, c.nb_place, c.localisation_arrive, c.prix, c.id_createur
                 FROM " . $this->table_name . " c
-                    LEFT JOIN
-                        categories e
-                            ON c.category_id = e.id
-                WHERE
-                    c.id = ?
-                LIMIT
-                    0,1";
+                     LEFT JOIN
+                         categories e
+                             ON c.category_id = e.id
+                 WHERE
+                     c.id = ?
+                 LIMIT
+                     0,1";
     
         // prepare query statement
         $stmt = $this->conn->prepare( $query );

@@ -29,7 +29,7 @@ $utilisateur->prenom = $data->prenom;
 $utilisateur->nom = $data->nom;
 $utilisateur->email = $data->email;
 $utilisateur->password = $data->password;
-$utilisateur->password = $data->tel;
+$utilisateur->tel = $data->tel;
 //$utilisateur->tel = $data->tel;
 
 // create the utilisateur
@@ -46,7 +46,7 @@ if(
     http_response_code(200);
  
     // display message: utilisateur was created
-    echo json_encode(array("message" => "utilisateur was created."));
+    echo json_encode(array("message" => "utilisateur was created." ));
 }
  
 // message if unable to create utilisateur

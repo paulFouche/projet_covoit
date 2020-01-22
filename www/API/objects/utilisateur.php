@@ -47,11 +47,11 @@ function readOne($id){
 }
 
 // used when filling up the update product form
-function readOneByEmail($email, $tel){
+function readOneByEmail($email, $password){
 
 
      // query to read single record
-    $query = "SELECT * FROM ".$this->table_name." WHERE email='".$email."' AND tel='".$tel."'   ";
+    $query = "SELECT * FROM ".$this->table_name." WHERE email='".$email."' AND password='".$password."'";
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
 

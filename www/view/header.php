@@ -8,11 +8,13 @@
 
 
     if (($_SESSION["email"]==null) && (basename(__FILE__) != "index.php") && (basename(__FILE__) != "inscription.php") && (basename(__FILE__) != "login.php")){
-      header('Location: index.php');
+        echo("email null redirection")
+        //header('Location: index.php');
     }
 
     if (($_SESSION["email"]!=null) && ((basename(__FILE__) == "inscription.php") || (basename(__FILE__) == "login.php"))){
-       header('Location: index.php');
+       echo("email non null redirection")
+        //header('Location: index.php');
     }
 
     if($_SESSION["email"]!=null){ // session active

@@ -146,7 +146,7 @@
     }
     
     var settings = {
-      "url": "http://localhost/projetCovoit/www/API/covoiturage/read.php",
+      "url": "http://dev.paul-fouche.com//www/API/covoiturage/read.php",
       "method": "GET",
       "timeout": 0,
     };
@@ -309,7 +309,7 @@
     function covoiturageConfirme(){
 
       var settingsCovoit = {
-        "url": "http://localhost/projetCovoit/www/API/covoiturage/updateReservationMoins.php",
+        "url": "http://dev.paul-fouche.com//www/API/covoiturage/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -323,7 +323,7 @@
       });
 
       var settingsEvent = {
-        "url": "http://localhost/projetCovoit/www/API/evenement/updateReservationMoins.php",
+        "url": "http://dev.paul-fouche.com//www/API/evenement/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -337,7 +337,7 @@
       });
 
       var settings = {
-        "url": "http://localhost/projetCovoit/www/API/reservation/create.php",
+        "url": "http://dev.paul-fouche.com//www/API/reservation/create.php",
         "method": "POST",
         "timeout": 0,
         "headers": {

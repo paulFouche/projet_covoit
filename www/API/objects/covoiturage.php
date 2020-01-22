@@ -132,6 +132,28 @@ class Covoiturage{
 
     }
 
+    // used when filling up the update product form
+    function readOneReservation($id_user){
+    
+        // query to read single record
+        $query = "SELECT * FROM covoiturage INNER JOIN reservation ON covoiturage.id = reservation.id_covoiturage AND reservation.id_utilisateur=".$id_user." ";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+    
+        return $stmt;
+
+    }
+
+    // used when filling up the update product form
+    function readMyCovoiturage($id_user){
+        $query = "SELECT * FROM `covoiturage` WHERE id_createur=".$id_user." ";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+    
+        return $stmt;
+
+    }
+
 
 
 

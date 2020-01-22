@@ -19,9 +19,9 @@ $product = new Utilisateur($db);
  
 // set ID property of record to read
 $product->email = isset($_GET['email']) ? $_GET['email'] : die();
-$product->tel = isset($_GET['tel']) ? $_GET['tel'] : die();
+$product->password = isset($_GET['password']) ? $_GET['password'] : die();
 // read the details of product to be edited
-$product->readOneByEmail($_GET['email'], $_GET['tel']);
+$product->readOneByEmail($_GET['email'], $_GET['password']);
  
 if($product->nom!=null){
     // create array

@@ -41,15 +41,14 @@
       }
 
       #informations {
-        display: none;
+        
       }
 
       #reservations {
-        display: none;
+        
       }
 
       #covoiturages {
-        display: none;
       }
     </style>
     <!-- Custom styles for this template -->
@@ -58,14 +57,15 @@
     <?php
       session_start();
       $email = $_SESSION["email"];
-      $tel = $_SESSION["tel"];
+      $password = $_SESSION["password"];
 
 
       $curling = curl_init();
-        $requete="http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&tel=".$tel ;
+        $requete="http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password ;
+        echo $requete;
 
         curl_setopt_array($curling, array(
-          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&tel=".$tel,
+          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -98,7 +98,7 @@
     <div class="container-fluid">
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky" style="margin-top: 14%; height: 100vh">
+      <div class="sidebar-sticky" style="margin-top: 20%; height: 100%">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">
@@ -117,24 +117,6 @@
               Mes covoiturages
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -143,17 +125,32 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes informations</h1>
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row" id="informations" class="my-4">
+        </div>
+      </div>
     </main>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="reservations">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes réservations</h1>
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row" id="reservations" class="my-4">
+        </div>
+      </div>
     </main>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="covoiturages">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes covoiturages</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row" id="covoits" class="my-4">
+        </div>
       </div>
     </main>
 
@@ -168,33 +165,127 @@
 
         var id = <?php echo $_SESSION["id"]; ?>; // ICI JULIEN REGARDE LA 
         console.log(id);
-        var settings_current_user = {
-          "url": "http://dev.paul-fouche.com/API/evenement/read.php",
+        let url_base_covoit = "http://dev.paul-fouche.com/API/covoiturage/read_my_covoiturage.php?id="
+        let url_covoit = url_base_covoit.concat(id)
+
+        var settings_covoit = {
+          "url": url_covoit, 
           "method": "GET",
           "timeout": 0,
           "headers": {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "text/plain"
           },
         };
 
-        $.ajax(settings_current_user).done(function (response) {
-          list_event = response.evenements;
-
-          console.log(list_event);
-
-          let dropdown = $('#locality-dropdown');
-
-          dropdown.empty();
-
-          dropdown.append('<option selected="true" disabled>Choisir un evenement</option>');
-          dropdown.prop('selectedIndex', 0);
-
-
-          // Populate dropdown with list of provinces
-          $.each(list_event, function (key, entry) {
-            dropdown.append($('<option></option>').attr('value', entry.id).text(entry.nom));
-          });
+        $.ajax(settings_covoit).done(function (response) {
+          listCovoits = response.covoiturages;
+          console.log(listCovoits);
+          displayCovoit()
         });
+
+        let url_base_reser = "http://dev.paul-fouche.com/API/covoiturage/read_one_reservation.php?id="
+        let url_reser = url_base_reser.concat(id)
+
+        var settings_resa = {
+          "url": url_reser, 
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+        };
+
+        $.ajax(settings_resa).done(function (response) {
+          listResa = response.reservations;
+          console.log(listResa);
+          displayResa()
+        });
+
+        let url_base_user = "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id="
+        let url_user = url_base_user.concat(id)
+
+        var settings_user = {
+          "url": url_user, 
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+        };
+
+        $.ajax(settings_user).done(function (response) {
+          user = response;
+          displayUser();
+        });
+
+        function displayCovoit(){
+          document.getElementById("covoits").innerHTML = ""
+            listCovoits.forEach(function(item,index){
+
+                var date = (new Date(item.depart_date)).toLocaleString();
+
+                var textHtml = '<div class="col-lg-4 col-md-6 mb-4 my-4">'
+                                + '<div class="card h-100">'
+                                +   '<div class="card-body">'
+                                +     '<h4 class="card-title">'
+                                +       '<a href="#">'+ item.localisation_depart + ' - '+ item.localisation_arrive +'</a>'
+                                +     '</h4>'
+                                +     '<h5>'+ item.prix +' €</h5>'
+                                +     '<p class="card-text"> date : ' + date + '</p>'
+                                +   '</div>'
+                                +   '<div class="card-footer">'
+                                +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
+                                +   '</div>'
+                                +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
+                                +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
+                                + '</div>'
+                                + '</div>'
+
+                document.getElementById("covoits").innerHTML += textHtml
+            });
+        }
+
+        function displayResa(){
+          document.getElementById("reservations").innerHTML = ""
+            listResa.forEach(function(item,index){
+
+                var date = (new Date(item.depart_date)).toLocaleString();
+
+                var textHtml = '<div class="col-lg-4 col-md-6 mb-4 my-4">'
+                                + '<div class="card h-100">'
+                                +   '<div class="card-body">'
+                                +     '<h4 class="card-title">'
+                                +       '<a href="#">'+ item.localisation_depart + ' - '+ item.localisation_arrive +'</a>'
+                                +     '</h4>'
+                                +     '<h5>'+ item.prix +' €</h5>'
+                                +     '<p class="card-text"> date : ' + date + '</p>'
+                                +   '</div>'
+                                +   '<div class="card-footer">'
+                                +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
+                                +   '</div>'
+                                +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
+                                +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
+                                + '</div>'
+                                + '</div>'
+
+                document.getElementById("reservations").innerHTML += textHtml
+            });
+        }
+
+
+        function displayUser(){
+          document.getElementById("informations").innerHTML = ""
+
+            var textHtml = '<div class="col-lg-6">'
+                            + '<ul class="list-group">'
+                            +   '<li class="list-group-item">'+user.prenom+' '+user.nom+'</li>'
+                            +   '<li class="list-group-item">'+user.email+'</li>'
+                            +   '<li class="list-group-item">'+user.tel+'</li>'
+                            + '</ul>'
+                            +'</div>'  
+
+            document.getElementById("informations").innerHTML += textHtml
+        }
 
       </script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -33,7 +33,9 @@ if(isset($_POST['email']) && isset($_POST['password']))
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
             $_SESSION["email"]=$email;
-            $_SESSION["tel"]=$tel;
+            $_SESSION["password"]=$password;
+            $_SESSION["prenom"]=$prenom;
+            $_SESSION["nom"]=$nom;
             header('Location: account.php');
         }
         else

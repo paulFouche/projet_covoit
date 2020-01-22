@@ -4,6 +4,7 @@
     $email = $_SESSION["email"];
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
+    echo $email;
 
 
     if (($_SESSION["email"]==null) && (basename(__FILE__) != "index.php") && (basename(__FILE__) != "inscription.php") && (basename(__FILE__) != "login.php")){

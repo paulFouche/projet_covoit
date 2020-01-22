@@ -55,30 +55,9 @@
 
   ?>
   <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">CovEvent</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="covevent/eventPage.php">Les événements</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="create_covoiturage.php">Proposer un covoit'</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="account.php">Mon Compte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Déconnexion</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php 
+  require('view/header.php'); 
+  ?>
 
     <div class="container" style="margin-top: 4%">
   <div class="py-5 text-center">
@@ -134,11 +113,6 @@
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2017-2019 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
   </footer>
 </div>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

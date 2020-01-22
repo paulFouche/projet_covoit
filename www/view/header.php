@@ -5,16 +5,15 @@
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
     echo $email;
+    
 
 
-    if (($_SESSION["email"]==null) && (basename(__FILE__) != "index.php") && (basename(__FILE__) != "inscription.php") && (basename(__FILE__) != "login.php")){
-        echo("email null redirection")
-        //header('Location: index.php');
+    if (($_SESSION["email"]==null) && (basename($_SERVER['PHP_SELF']) != "index.php") && (basename($_SERVER['PHP_SELF']) != "inscription.php") && (basename($_SERVER['PHP_SELF']) != "login.php")){
+        header('Location: index.php');
     }
 
-    if (($_SESSION["email"]!=null) && ((basename(__FILE__) == "inscription.php") || (basename(__FILE__) == "login.php"))){
-       echo("email non null redirection")
-        //header('Location: index.php');
+    if (($_SESSION["email"]!=null) && ((basename($_SERVER['PHP_SELF']) == "inscription.php") || (basename($_SERVER['PHP_SELF']) == "login.php"))){
+        header('Location: index.php');
     }
 
     if($_SESSION["email"]!=null){ // session active

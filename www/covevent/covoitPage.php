@@ -145,7 +145,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-success">Confirmer</button>
+          <button type="button" class="btn btn-success" onClick="covoiturageConfirme()">Confirmer</button>
         </div>
       </div>
     </div>
@@ -164,7 +164,12 @@
 <script>
     console.log("test")
     var listCovoits = [];
-    var currentCovoitId
+    var confirmationCovoit = {
+      id_utilisateur : 0,
+      id_evenement : 0,
+      id_covoit : 0,
+    }
+
     var navbar = {
       "nb_place" : [],
       "depart_date" : [],
@@ -219,7 +224,7 @@
                             +   '<div class="card-footer">'
                             +     '<small class="text-muted">' + item.nb_place + ' places disponibles</small>'
                             +   '</div>'
-                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setCurrent('+ index +')">Réserver</button>'
+                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setCurrent('+ item.id + ',' + item.id_evenement')">Réserver</button>'
                             + '</div>'
                             + '</div>'
 
@@ -321,11 +326,60 @@
       document.getElementById(selection).innerHTML = html
     }
 
-    function setCurrent(index){
-      currentCovoitId = listCovoits[index].id
-      document.getElementById("currentSelection").innerHTML =  listCovoits[index].localisation_depart 
-                                                              + ' - '+ listCovoits[index].localisation_arrive
-                                                              + ' <br> prix : ' + listCovoits[index].prix
-                                                              + ' € <br> date : ' + listCovoits[index].depart_date
+    function setCurrent(id,id_evenement){
+      confirmationCovoit.id = id
+      confirmationCovoit.id_evenement = id_evenement
+      confirmationCovoit.id_utilisateur = 1
+      document.getElementById("currentSelection").innerHTML =  listCovoits[id].localisation_depart 
+                                                              + ' - '+ listCovoits[id].localisation_arrive
+                                                              + ' <br> prix : ' + listCovoits[id].prix
+                                                              + ' € <br> date : ' + listCovoits[id].depart_date
+    }
+
+    function covoiturageConfirme(){
+
+      var settingsCovoit = {
+        "url": "localhost/projetCovoit/www/API/covoiturage/updateReservationMoins.php",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "data": "{\n\t\"id\":\""+ confirmationCovoit.id + "\"\n}",
+      };
+
+      $.ajax(settingsCovoit).done(function (response) {
+        console.log(response);
+      });
+
+      var settingsEvent = {
+        "url": "localhost/projetCovoit/www/API/evenement/updateReservationMoins.php",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "data": "{\n\t\"id\":\""+ confirmationCovoit.id_evenement + "\"\n}",
+      };
+
+      $.ajax(settingsEvent).done(function (response) {
+        console.log(response);
+      });
+
+      var settings = {
+        "url": "localhost/projetCovoit/www/API/reservation/create.php",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "data": "{\n\t\"id_utilisateur\": \"" + 1 + "\",\n    \"id_covoiturage\": \"" + confirmationCovoit.id + "\"\n}",
+      };
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        document.location.href="nouvellepage.html"
+      });
+
     }
 </script>

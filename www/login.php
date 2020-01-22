@@ -59,7 +59,7 @@
     <title>CovEvent</title>
   </head>
   <body>
-  <?php 
+    <?php 
   require('view/header.php'); 
   ?>
     <form class="form-signin" action="login_script.php" method="POST">

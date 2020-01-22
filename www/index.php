@@ -69,11 +69,8 @@
       $to      = "julien.bardin@reseau.eseo.fr";
       $subject = "votre reservation";
       $message = "c'est good baby";
-      $headers = array(
-          'From' => 'julien@bardin.me',
-          'Reply-To' => 'julien@bardin.me',
-          'X-Mailer' => 'PHP/' . phpversion()
-      );
+      $headers = "From: $nom\n
+            Reply-To: $email";
 
       echo '<script>console.log("email here")</script>';
 

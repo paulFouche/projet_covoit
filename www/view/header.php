@@ -6,11 +6,11 @@
     $id = $_SESSION["id"];
 
     if (($_SESSION["email"]==null) && (__FILE__ != "index.php") && (__FILE__ != "inscription.php") && (__FILE__ != "login.php")){
-      //header('Location: index.php');
+      header('Location: index.php');
     }
 
     if (($_SESSION["email"]!=null) && ((__FILE__ == "inscription.php") || (__FILE__ == "login.php"))){
-       // header('Location: index.php');
+       header('Location: index.php');
       }
 
     if($_SESSION["email"]!=null){ // session active

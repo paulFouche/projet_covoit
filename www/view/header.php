@@ -5,13 +5,14 @@
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
 
-    if (($_SESSION["email"]==null) && (__FILE__ != "index.php") && (__FILE__ != "inscription.php") && (__FILE__ != "login.php")){
+
+    if (($_SESSION["email"]==null) && (basename(__FILE__) != "index.php") && (basename(__FILE__) != "inscription.php") && (basename(__FILE__) != "login.php")){
       header('Location: index.php');
     }
 
-    if (($_SESSION["email"]!=null) && ((__FILE__ == "inscription.php") || (__FILE__ == "login.php"))){
+    if (($_SESSION["email"]!=null) && ((basename(__FILE__) == "inscription.php") || (basename(__FILE__) == "login.php"))){
        header('Location: index.php');
-      }
+    }
 
     if($_SESSION["email"]!=null){ // session active
         echo "<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top' style='background-color:#112233;'>

@@ -23,8 +23,8 @@
   <body>
     <!-- Navigation -->
     <?php 
-  require('view/header.php'); 
-  ?>
+    require('view/header.php'); 
+    ?>
 
     <main role="main" class="container">
 

@@ -4,6 +4,7 @@
     $email = $_SESSION["email"];
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
+    echo $email;
 
     if (($_SESSION["email"]==null) && (__FILE__ != "index.php") && (__FILE__ != "inscription.php") && (__FILE__ != "login.php")){
       header('Location: index.php');

@@ -48,8 +48,15 @@ if(isset($_POST['email']) && isset($_POST['password']))
             die('error occured: ' . $decoded->response->errormessage);
             header('Location: index.php');
         }
+
         echo 'response ok!';
         var_export($decoded->response);
+
+        $_SESSION["email"]=$email;
+        $_SESSION["tel"]=$tel;
+        $_SESSION["prenom"]=$prenom;
+        $_SESSION["nom"]=$nom;
+
         header('Location: account.php');
     }
     else

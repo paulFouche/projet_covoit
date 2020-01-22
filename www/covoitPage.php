@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -12,42 +12,19 @@
   <title>Covevent</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="public/css/shop-homepage.css" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php 
+  require('view/header.php'); 
+  ?>
 
   <!-- Page Content -->
   <div class="container">
@@ -61,37 +38,21 @@
           <a href="#" class="list-group-item disabled"><B>Evenements</B></a>
           <a class="list-group-item">
             <select id="eventSelect" class="lotDeSelection">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
             </select>
           </a>
           <a href="#" class="list-group-item disabled"><B>Ville de Départ</B></a>
           <a class="list-group-item">
             <select id="villeDepartSelect" class="lotDeSelection">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
             </select>
           </a>
           <a href="#" class="list-group-item disabled"><B>Ville D'arrivée</B></a>
           <a class="list-group-item">
             <select id="villeDarriveeSelect" class="lotDeSelection">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
             </select>
           </a>
           <!-- <a href="#" class="list-group-item disabled"><B>Prix</B></a>
           <a class="list-group-item">
             <select id="prixSelect">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
             </select>
           </a> -->
           <a href="#" class="list-group-item disabled"><B>Prix Mini</B></a>
@@ -121,12 +82,8 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Covevent Copyright &copy; 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  <?php include 'view/footer.php'; ?>
+
 
 
   <!-- Modal -->
@@ -152,8 +109,8 @@
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/vendor/jquery/jquery.min.js"></script>
+  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 
@@ -165,7 +122,7 @@
     console.log("test")
     var listCovoits = [];
     var confirmationCovoit = {
-      id_utilisateur : 0,
+      id_utilisateur : <?php echo $_SESSION["id"]; ?>,
       id_evenement : 0,
       id_covoit : 0,
     }
@@ -212,6 +169,8 @@
                                 && (choix.localisation_arrive == "All" || choix.localisation_arrive == item.localisation_arrive)
                                 && (choix.prixMin <= item.prix && choix.prixMax >= item.prix)){
 
+                                  var date = (new Date(item.depart_date)).toLocaleString()
+
             var textHtml = '<div class="col-lg-4 col-md-6 mb-4 my-4">'
                             + '<div class="card h-100">'
                             +   '<div class="card-body">'
@@ -219,12 +178,13 @@
                             +       '<a href="#">'+ item.localisation_depart + ' - '+ item.localisation_arrive +'</a>'
                             +     '</h4>'
                             +     '<h5>'+ item.prix +' €</h5>'
-                            +     '<p class="card-text"> date : ' + item.depart_date + '</p>'
+                            +     '<p class="card-text"> date : ' + date + '</p>'
                             +   '</div>'
                             +   '<div class="card-footer">'
-                            +     '<small class="text-muted">' + item.nb_place + ' places disponibles</small>'
+                            +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
                             +   '</div>'
-                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="setCurrent('+ item.id + ',' + item.id_evenement')">Réserver</button>'
+                            +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
+                            +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
                             + '</div>'
                             + '</div>'
 
@@ -326,20 +286,30 @@
       document.getElementById(selection).innerHTML = html
     }
 
-    function setCurrent(id,id_evenement){
+    function setCurrent(id,localisation_depart,localisation_arrive,prix,id_evenement,depart_date){
       confirmationCovoit.id = id
       confirmationCovoit.id_evenement = id_evenement
-      confirmationCovoit.id_utilisateur = 1
-      document.getElementById("currentSelection").innerHTML =  listCovoits[id].localisation_depart 
-                                                              + ' - '+ listCovoits[id].localisation_arrive
-                                                              + ' <br> prix : ' + listCovoits[id].prix
-                                                              + ' € <br> date : ' + listCovoits[id].depart_date
+      console.log("changement")
+      document.getElementById("currentSelection").innerHTML =  localisation_depart 
+                                                              + ' - '+ localisation_arrive
+                                                              + ' <br> prix : ' + prix
+                                                              + ' € <br> date : ' + depart_date
+    }
+
+    function covoiturageConfirme2(){
+      var data = "This is my email";
+      $.ajax({
+          type: "POST",
+          url: "email.php",
+          data: data,
+          dataType: "text"
+      });
     }
 
     function covoiturageConfirme(){
 
       var settingsCovoit = {
-        "url": "localhost/projetCovoit/www/API/covoiturage/updateReservationMoins.php",
+        "url": "http://localhost/projetCovoit/www/API/covoiturage/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -353,7 +323,7 @@
       });
 
       var settingsEvent = {
-        "url": "localhost/projetCovoit/www/API/evenement/updateReservationMoins.php",
+        "url": "http://localhost/projetCovoit/www/API/evenement/updateReservationMoins.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -367,18 +337,19 @@
       });
 
       var settings = {
-        "url": "localhost/projetCovoit/www/API/reservation/create.php",
+        "url": "http://localhost/projetCovoit/www/API/reservation/create.php",
         "method": "POST",
         "timeout": 0,
         "headers": {
           "Content-Type": "text/plain"
         },
-        "data": "{\n\t\"id_utilisateur\": \"" + 1 + "\",\n    \"id_covoiturage\": \"" + confirmationCovoit.id + "\"\n}",
+        "data": "{\n\t\"id_utilisateur\": \"" + <?php echo $_SESSION["id"]; ?> + "\",\n    \"id_covoiturage\": \"" + confirmationCovoit.id + "\"\n}",
       };
 
       $.ajax(settings).done(function (response) {
         console.log(response);
-        document.location.href="nouvellepage.html"
+        console.log("c'est réservé")
+        document.location.href="index.html"
       });
 
     }

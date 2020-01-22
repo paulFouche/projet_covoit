@@ -4,7 +4,6 @@
     $email = $_SESSION["email"];
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
-    echo $email;
     
 
 

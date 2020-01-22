@@ -59,24 +59,9 @@
     <title>CovEvent</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">CovEvent</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="inscription.php">Inscription</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Connexion</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php 
+  require('view/header.php'); 
+  ?>
     <form class="form-signin" action="login_script.php" method="POST">
       <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

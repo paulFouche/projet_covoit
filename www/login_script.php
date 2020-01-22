@@ -20,7 +20,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
     // pour éliminer toute attaque de type injection SQL et XSS
     $email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email'])); 
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-    echo $email;
+    session_start();
     if($email !== "" && $password !== "")
     {
         $requete = "SELECT count(*), id FROM utilisateur WHERE email = '".$email."' and password = '".$password."' ";
@@ -32,6 +32,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
         
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
+            $_SESSION["email"]=$email;
+            $_SESSION["tel"]=$tel;
             header('Location: account.php');
         }
         else

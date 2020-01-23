@@ -13,12 +13,18 @@ if(isset($_POST['nb_place']) && isset($_POST['prix']))
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
     $id_event = mysqli_real_escape_string($db,htmlspecialchars($_POST['lieu'])); 
-    echo $id_event;
     $localisation_depart = mysqli_real_escape_string($db,htmlspecialchars($_POST['localisation_depart']));
     $localisation_arrive = mysqli_real_escape_string($db,htmlspecialchars($_POST['localisation_arrive']));
     $depart_date = mysqli_real_escape_string($db,htmlspecialchars($_POST['depart_date']));
     $prix = mysqli_real_escape_string($db,htmlspecialchars($_POST['prix']));
     $nb_place = mysqli_real_escape_string($db,htmlspecialchars($_POST['nb_place']));
+
+    //$id_event = pg_escape_string($db,htmlspecialchars($_POST['lieu'])); 
+    //$localisation_depart = pg_escape_string($db,htmlspecialchars($_POST['localisation_depart']));
+    //$localisation_arrive = pg_escape_string($db,htmlspecialchars($_POST['localisation_arrive']));
+    //$depart_date = pg_escape_string($db,htmlspecialchars($_POST['depart_date']));
+    //$prix = pg_escape_string($db,htmlspecialchars($_POST['prix']));
+    //$nb_place = pg_escape_string($db,htmlspecialchars($_POST['nb_place']));
     
     if($nb_place !== "" && $prix !== "")
     {

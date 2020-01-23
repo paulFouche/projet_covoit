@@ -18,6 +18,13 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
     $tel = mysqli_real_escape_string($db,htmlspecialchars($_POST['tel']));
 
+
+    //$prenom = pg_escape_string($db,htmlspecialchars($_POST['firstname'])); 
+    //$nom = pg_escape_string($db,htmlspecialchars($_POST['lastname']));
+    //$email = pg_escape_string($db,htmlspecialchars($_POST['email']));
+    //$password = pg_escape_string($db,htmlspecialchars($_POST['password']));
+    //$tel = pg_escape_string($db,htmlspecialchars($_POST['tel']));
+
     $to = $email;
     $subject = "Inscription";
     $txt = "Votre inscription a bien été prise en charge par CovEvent.";

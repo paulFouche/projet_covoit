@@ -101,17 +101,17 @@
       <div class="sidebar-sticky" style="height: 100vh">
         <ul class="nav flex-column" style="margin-top: 25%;">
           <li class="nav-item">
-            <a class="nav-link" href="#informations">
+            <a class="nav-link" href="#informations" onclick="afficher_informations()">
               Mes informations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#reservations">
+            <a class="nav-link" href="#reservations" onclick="afficher_reservations()">
               Mes reservations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#covoiturages">
+            <a class="nav-link" href="#covoiturages" onclick="afficher_covoiturages()">
               Mes covoiturages
             </a>
           </li>
@@ -156,7 +156,24 @@
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script>
 
+
+
+
         var id = <?php echo $_SESSION["id"]; ?>; // ICI JULIEN REGARDE LA 
+
+        function afficher_informations() {
+
+        }
+
+        function afficher_reservations() {
+
+        }
+
+        function afficher_covoiturages() {
+
+        }
+
+
         let url_base_covoit = "http://dev.paul-fouche.com/API/covoiturage/read_my_covoiturage.php?id="
         let url_covoit = url_base_covoit.concat(id)
 

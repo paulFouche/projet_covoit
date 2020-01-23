@@ -86,7 +86,8 @@ function create(){
                 nom = :nom,
                 email = :email,
                 password = :password,
-                tel = :tel";
+                tel = :tel,
+                login = :login";
  
     // prepare the query
     $stmt = $this->conn->prepare($query);
@@ -97,6 +98,7 @@ function create(){
     $this->email=htmlspecialchars(strip_tags($this->email));
     $this->password=htmlspecialchars(strip_tags($this->password));
     $this->tel=htmlspecialchars(strip_tags($this->tel));
+    $this->login=htmlspecialchars(strip_tags($this->login));
  
     // bind the values
     $stmt->bindParam(':prenom', $this->prenom);
@@ -108,6 +110,8 @@ function create(){
     //$stmt->bindParam(':password', $password_hash);
     $stmt->bindParam(':password', $this->password);
     $stmt->bindParam(':tel', $this->tel);
+    $stmt->bindParam(':login', $this->login);
+ 
  
     // execute the query, also check if query was successful
     if($stmt->execute()){

@@ -76,11 +76,13 @@
         </div>
 
         <div class="mb-3">
+          <label for="email">Login</label>
+          <input type="email" class="form-control" id="login" name="login" placeholder="login">
+        </div>
+
+        <div class="mb-3">
           <label for="email">Email</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Un email valide est requis
-          </div>
         </div>
 
         <div class="mb-3">

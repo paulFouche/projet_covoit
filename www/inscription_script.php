@@ -17,6 +17,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email']));
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
     $tel = mysqli_real_escape_string($db,htmlspecialchars($_POST['tel']));
+    $login = mysqli_real_escape_string($db,htmlspecialchars($_POST['login']));
 
 
     //$prenom = pg_escape_string($db,htmlspecialchars($_POST['firstname'])); 
@@ -24,6 +25,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
     //$email = pg_escape_string($db,htmlspecialchars($_POST['email']));
     //$password = pg_escape_string($db,htmlspecialchars($_POST['password']));
     //$tel = pg_escape_string($db,htmlspecialchars($_POST['tel']));
+    //$login = pg_escape_string($db,htmlspecialchars($_POST['login']));
 
     $to = $email;
     $subject = "Inscription";
@@ -47,7 +49,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
                 'nom' => $nom,
                 'email' => $email,
                 'password' => $password,
-                'tel' => $tel
+                'tel' => $tel,
+                'login' => $login
         );
 
 

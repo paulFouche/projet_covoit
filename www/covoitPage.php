@@ -350,7 +350,7 @@
       };
 
       $.ajax(emailSettings).done(function (response) {
-        console.log(reponse)
+        console.log(response)
       });
 
       var settings = {

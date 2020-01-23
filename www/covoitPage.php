@@ -366,7 +366,7 @@
       $.ajax(settings).done(function (response) {
         console.log(response);
         console.log("c'est réservé")
-        //document.location.href="emailReservation.php"
+        document.location.href="account.php"
       });
 
 

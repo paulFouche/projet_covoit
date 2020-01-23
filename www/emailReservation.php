@@ -11,8 +11,10 @@
             //--
             $curl = curl_init();
 
+            $url_api = "http://dev.paul-fouche.com";
+
             curl_setopt_array($curl, array(
-              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=".$creator_id,
+              CURLOPT_URL => $url_api."/API/utilisateur/read_one.php?id=".$creator_id,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,
@@ -39,7 +41,7 @@
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=".$user_id,
+              CURLOPT_URL => $url_api."/API/utilisateur/read_one.php?id=".$user_id,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,

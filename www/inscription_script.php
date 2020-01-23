@@ -31,9 +31,9 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
     if($email !== "" && $password !== "")
     {
-        //next example will insert new conversation
-        $service_url = 'http://dev.paul-fouche.com/API/utilisateur/create.php';
-        $curl = curl_init($service_url);
+
+        $curl = curl_init();
+
         $curl_post_data = array(
                 'prenom' => $prenom,
                 'nom' => $nom,
@@ -41,34 +41,43 @@ if(isset($_POST['email']) && isset($_POST['password']))
                 'password' => $password,
                 'tel' => $tel
         );
-        echo  json_encode($curl_post_data);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($curl_post_data));
-        $curl_response = curl_exec($curl);
-        echo $curl_response;
-        if ($curl_response === false) {
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/create.php",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS =>$curl_post_data,
+          CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/x-www-form-urlencoded"
+          ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
+        if ($response === false) {
             $info = curl_getinfo($curl);
             curl_close($curl);
             die('error occured during curl exec. Additioanl info: ' . var_export($info));
             header('Location: index.php');
-        }
-        curl_close($curl);
-        $decoded = json_decode($curl_response);
-        if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
-            die('error occured: ' . $decoded->response->errormessage);
-            header('Location: index.php');
-        }
+        } 
 
-        echo 'response ok!';
-        var_export($decoded->response);
+        if ($response === true) {
+            $_SESSION["email"]=$email;
+            $_SESSION["password"]=$password;
+            $_SESSION["prenom"]=$prenom;
+            $_SESSION["nom"]=$nom;
 
-        $_SESSION["email"]=$email;
-        $_SESSION["password"]=$password;
-        $_SESSION["prenom"]=$prenom;
-        $_SESSION["nom"]=$nom;
+            header('Location: account.php');
+        } 
 
-        header('Location: account.php');
     }
     else
     {

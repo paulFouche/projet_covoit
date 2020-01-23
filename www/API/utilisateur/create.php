@@ -33,7 +33,7 @@ $utilisateur->tel = $data->tel;
 
 $email = $data->email;
 
-$email_exists = emailExists($email);
+$email_exists = $utilisateur->emailExists($email);
 //$utilisateur->tel = $data->tel;
 
 // create the utilisateur
@@ -51,7 +51,7 @@ if(
     http_response_code(200);
  
     // display message: utilisateur was created
-    echo json_encode(array("message" => "utilisateur was created." ));
+    echo json_encode(true);
 }
  
 // message if unable to create utilisateur
@@ -61,6 +61,6 @@ else{
     http_response_code(400);
  
     // display message: unable to create utilisateur
-    echo json_encode(array("message" => "Unable to create utilisateur."));
+    echo json_encode(false);
 }
 ?>

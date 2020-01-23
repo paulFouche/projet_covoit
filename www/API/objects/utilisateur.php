@@ -121,7 +121,7 @@ function create(){
 function emailExists($email){
  
     // query to check if email exists
-    $query = "SELECT * FROM " . $this->table_name . " WHERE email =".$email." ";
+    $query = "SELECT * FROM " . $this->table_name . " WHERE email ='".$email."'' ";
  
     // prepare the query
     $stmt = $this->conn->prepare( $query );

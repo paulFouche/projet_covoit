@@ -8,7 +8,7 @@
             echo "creator : ".$creator_id;
             echo "user : ".$user_id;
 
-
+            //--
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -20,19 +20,21 @@
               CURLOPT_FOLLOWLOCATION => true,
               CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
               CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/x-www-form-urlencoded"
+              ),
             ));
 
-            $dataCreator = curl_exec($curl);
+            $responseCreator = curl_exec($curl);
+            $respCreator = json_decode($responseCreator);
 
             curl_close($curl);
-            $responseCreator - json_decode($dataCreator);
+            $creator_email = $respCreator->email;
+            $creator_tel = $respCreator->tel;
+            $creator_nom = $respCreator->nom;
+            
 
-            $creator_email = $responseCreator['email'];
-            $creator_tel = $responseCreator['tel'];
-            $creator_nom = $responseCreator['nom']." ".$responseCreator['prenom'];
-
-
-
+            //-----
 
             $curl = curl_init();
 
@@ -45,16 +47,20 @@
               CURLOPT_FOLLOWLOCATION => true,
               CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
               CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/x-www-form-urlencoded"
+              ),
             ));
 
-            $dataUser = curl_exec($curl);
+            $responseUser = curl_exec($curl);
+            $respUser = json_decode($responseUser);
 
             curl_close($curl);
-            $responseUser - json_decode($dataUser);
 
-            $user_email = $responseUser['email'];
-            $user_tel = $responseUser['tel'];
-            $user_nom = $responseUser['nom']." ".$responseUser['prenom'];
+            $user_email = $respUser->email;
+            $user_tel = $respUser->tel;
+            $user_nom = $respUser->nom;
+            echo $user_email;
 
 
             $to = $user_email;

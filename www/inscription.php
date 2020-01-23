@@ -93,7 +93,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="address2">Téléphone <span class="text-muted">(Optionnel)</span></label>
+          <label for="address2">Téléphone</label>
           <input type="text" class="form-control" id="tel" name="tel" placeholder="+33 6 35 57 58 74">
         </div>
 

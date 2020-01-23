@@ -26,7 +26,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
     echo '<script>console.log("email here")</script>';
 
-    mail($to,$subject,$txt,$headers);
+    
         
 
     if($email !== "" && $password !== "")
@@ -42,6 +42,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
                 'tel' => $tel
         );
 
+
+
         curl_setopt_array($curl, array(
           CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/create.php",
           CURLOPT_RETURNTRANSFER => true,
@@ -51,30 +53,30 @@ if(isset($_POST['email']) && isset($_POST['password']))
           CURLOPT_FOLLOWLOCATION => true,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS =>$curl_post_data,
+          CURLOPT_POSTFIELDS =>json_encode($curl_post_data),
           CURLOPT_HTTPHEADER => array(
             "Content-Type: application/x-www-form-urlencoded"
           ),
         ));
 
         $response = curl_exec($curl);
+        $resp = $response;
 
         curl_close($curl);
-        echo $response;
-
-        if ($response === false) {
-            $info = curl_getinfo($curl);
-            curl_close($curl);
-            die('error occured during curl exec. Additioanl info: ' . var_export($info));
+        echo $resp;
+        if ($resp == 'false') {
+            echo "je suis dans le false";
             header('Location: index.php');
         } 
 
-        if ($response === true) {
+        if ($resp == 'true') {
             $_SESSION["email"]=$email;
             $_SESSION["password"]=$password;
             $_SESSION["prenom"]=$prenom;
             $_SESSION["nom"]=$nom;
 
+            echo "je suis dans le true";
+            mail($to,$subject,$txt,$headers);
             header('Location: account.php');
         } 
 

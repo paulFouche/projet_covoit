@@ -340,7 +340,7 @@
 
       var emailSettings = {
         "url": url_api.concat("/emailReservation.php"),
-        "url": "http://dev.paul-fouche.com/emailReservation.php?id=" + confirmationCovoit.id_utilisateur,
+        "url": url_api.concat("/emailReservation.php?id=",confirmationCovoit.id_utilisateur),
         "method": "GET",
         "timeout": 0,
         "headers": {

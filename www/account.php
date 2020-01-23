@@ -48,7 +48,7 @@
         display: none;
       }
 
-      #covoiturages {
+      #covoits {
         display: none;
       }
     </style>
@@ -164,19 +164,19 @@
 
         function afficher_informations() {
           document.getElementById("reservations").style.display = "none";
-          document.getElementById("covoiturages").style.display = "none";
+          document.getElementById("covoits").style.display = "none";
           document.getElementById("informations").style.display = "contents";
         }
 
         function afficher_reservations() {
           document.getElementById("reservations").style.display = "contents";
-          document.getElementById("covoiturages").style.display = "none";
+          document.getElementById("covoits").style.display = "none";
           document.getElementById("informations").style.display = "none";
         }
 
         function afficher_covoiturages() {
           document.getElementById("reservations").style.display = "none";
-          document.getElementById("covoiturages").style.display = "contents";
+          document.getElementById("covoits").style.display = "contents";
           document.getElementById("informations").style.display = "none";
         }
 

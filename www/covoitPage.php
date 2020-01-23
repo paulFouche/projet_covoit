@@ -339,11 +339,8 @@
       });
 
       var emailSettings = {
-<<<<<<< HEAD
         "url": url_api.concat("/emailReservation.php"),
-=======
         "url": "http://dev.paul-fouche.com/emailReservation.php?id=" + confirmationCovoit.id_utilisateur,
->>>>>>> 86bfb20db7f1a5ad67302c5ee2df169c8b8efb3e
         "method": "GET",
         "timeout": 0,
         "headers": {

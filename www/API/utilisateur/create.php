@@ -30,30 +30,28 @@ $utilisateur->nom = $data->nom;
 $utilisateur->email = $data->email;
 $utilisateur->password = $data->password;
 $utilisateur->tel = $data->tel;
-
 $email = $data->email;
 
 $email_exists = $utilisateur->emailExists($email);
 //$utilisateur->tel = $data->tel;
 
 // create the utilisateur
-if(
-    !empty($utilisateur->prenom) &&
-    !empty($utilisateur->email) &&
-    !empty($utilisateur->password) &&
-    !empty($utilisateur->nom) &&
-    !empty($utilisateur->tel) &&
-    $utilisateur->create() &&
-    $email_exists==false
-){
- 
-    // set response code
-    http_response_code(200);
- 
-    // display message: utilisateur was created
-    echo json_encode(true);
-}
- 
+if($email_exists=='false'){
+    if(
+        !empty($utilisateur->prenom) &&
+        !empty($utilisateur->email) &&
+        !empty($utilisateur->password) &&
+        !empty($utilisateur->nom) &&
+        !empty($utilisateur->tel) &&
+        $utilisateur->create()
+    ){
+        // set response code
+        http_response_code(200);
+     
+        // display message: utilisateur was created
+        echo json_encode(true);
+    }
+ }
 // message if unable to create utilisateur
 else{
  

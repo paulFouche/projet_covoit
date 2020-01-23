@@ -121,8 +121,7 @@ function create(){
 function emailExists($email){
  
     // query to check if email exists
-    $query = "SELECT * FROM " . $this->table_name . " WHERE email ='".$email."'' ";
- 
+    $query = "SELECT * FROM " . $this->table_name . " WHERE email ='".$email."' ";
     // prepare the query
     $stmt = $this->conn->prepare( $query );
  
@@ -137,15 +136,14 @@ function emailExists($email){
  
     // get number of rows
     $num = $stmt->rowCount();
- 
     // if email exists, assign values to object properties for easy access and use for php sessions
     if($num>0){
  
-        return true;
+        return json_encode(true);
     }
  
     // return false if email does not exist in the database
-    return false;
+    return json_encode(false);
 }
  
 // update a utilisateur record

@@ -63,7 +63,6 @@
   require('view/header.php'); 
   ?>
     <form class="form-signin" action="login_script.php" method="POST">
-      <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>

@@ -49,7 +49,6 @@
   ?>
     <div class="container" style="margin-top: 4%">
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h2>Inscription</h2>
     <p class="lead"></p>
   </div>
@@ -93,7 +92,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="address2">Téléphone <span class="text-muted">(Optionnel)</span></label>
+          <label for="address2">Téléphone</label>
           <input type="text" class="form-control" id="tel" name="tel" placeholder="+33 6 35 57 58 74">
         </div>
 

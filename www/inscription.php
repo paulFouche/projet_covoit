@@ -76,7 +76,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optionnel)</span></label>
+          <label for="email">Email</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
           <div class="invalid-feedback">
             Un email valide est requis

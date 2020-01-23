@@ -27,6 +27,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
         echo $requete;
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
+        echo $reponse;
         $count = $reponse['count(*)'];
         $numUtilisateur = $reponse['id'];
         

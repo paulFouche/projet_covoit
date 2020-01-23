@@ -66,15 +66,17 @@
   <?php include 'view/footer.php'; ?>
 
   <?php
-      $to      = "julien.bardin@reseau.eseo.fr";
-      $subject = "votre reservation";
-      $message = "c'est good baby";
-      $headers = "From: $nom\n
-            Reply-To: $email";
+      $to = "julien@bardin.me";
+      $subject = "My subject";
+      $txt = "Hello world!";
+      $headers = "From: test@covevent.com" . "\r\n" .
+      "CC: covevent@covevent.com";
+      
+      
 
       echo '<script>console.log("email here")</script>';
 
-      if(mail($to, $subject, $message, $headers))
+      if(mail($to,$subject,$txt,$headers))
       {
               echo "<script>console.log(L'email a bien été envoyé.</script>";
       }

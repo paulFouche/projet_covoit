@@ -5,6 +5,7 @@
     $tel = $_SESSION["tel"];
     $id = $_SESSION["id"];
     
+    
 
 
     if (($_SESSION["email"]==null) && (basename($_SERVER['PHP_SELF']) != "index.php") && (basename($_SERVER['PHP_SELF']) != "inscription.php") && (basename($_SERVER['PHP_SELF']) != "login.php")){

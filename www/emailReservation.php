@@ -7,5 +7,9 @@
 
               echo '<script>console.log("email here")</script>';
 
-              mail($to,$subject,$txt,$headers);
-      ?>
+              if(mail($to,$subject,$txt,$headers)){
+                echo 'console.log("réussi")';
+              } else {
+                echo 'console.log("echec")';
+              }
+?>

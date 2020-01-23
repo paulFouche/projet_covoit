@@ -348,6 +348,7 @@
       };
 
       $.ajax(emailSettings).done(function (response) {
+        console.log(response)
       });
 
       var settings = {
@@ -363,7 +364,7 @@
       $.ajax(settings).done(function (response) {
         console.log(response);
         console.log("c'est réservé")
-        document.location.href="emailReservation.php"
+        //document.location.href="emailReservation.php"
       });
 
 

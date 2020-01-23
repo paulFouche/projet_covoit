@@ -114,7 +114,7 @@
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 200vh">
       <div class="sidebar-sticky" style="height: 200vh">
-        <ul class="nav flex-column" style="margin-top: 25%;">
+        <ul class="nav flex-column" style="margin-top: 15%;">
           <li class="nav-item">
             <a class="nav-link" onclick="afficher_informations()">
               Mes informations

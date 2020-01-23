@@ -114,7 +114,7 @@
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 200vh">
       <div class="sidebar-sticky" style="height: 200vh">
-        <ul class="nav flex-column" style="margin-top: 15%;">
+        <ul class="nav flex-column" style="margin-top: 25%;">
           <li class="nav-item">
             <a class="nav-link" onclick="afficher_informations()">
               Mes informations
@@ -133,7 +133,7 @@
         </ul>
       </div>
     </nav>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 10%">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 1%">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes informations</h1>
       </div>

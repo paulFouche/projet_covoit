@@ -12,7 +12,7 @@
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=" + $creator_id,
+              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=".$creator_id,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,
@@ -29,7 +29,7 @@
 
             $creator_email = $responseCreator['email'];
             $creator_tel = $responseCreator['tel'];
-            $creator_nom = $responseCreator['nom'] + " " + $responseCreator['prenom'];
+            $creator_nom = $responseCreator['nom']." ".$responseCreator['prenom'];
 
 
 
@@ -37,7 +37,7 @@
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=" + $user_id,
+              CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id=".$user_id,
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,
@@ -54,13 +54,13 @@
 
             $user_email = $responseUser['email'];
             $user_tel = $responseUser['tel'];
-            $user_nom = $responseUser['nom'] + " " + $responseUser['prenom'];
+            $user_nom = $responseUser['nom']." ".$responseUser['prenom'];
 
 
             $to = $user_email;
             $subject = 'Reservation';
             $txt = 'Votre reservation a bien été prise en compte, voici les coordonnées de votre correspondant : ' 
-                    +'[nom : ' + $creator_nom + ', email : ' + $creator_email + ', tel : ' + $creator_tel + ']';
+                    +'[nom : '.$creator_nom.', email : '.$creator_email.', tel : '.$creator_tel.']';
             $headers = "From: contact@covevent.com" . "\r\n" .
             "CC: support@covevent.com";
 
@@ -73,7 +73,7 @@
             $to = $creator_email;
             $subject = 'Reservation';
             $txt = 'Quelqu\'un a reserver une place dans votre vehicule, voici les coordonnées de votre correspondant : ' 
-                    +'[nom : ' + $user_nom + ', email : ' + $user_email + ', tel : ' + $user_tel + ']';
+                    +'[nom : '.$user_nom.', email : '.$user_email.', tel : '.$user_tel.']';
             $headers = "From: contact@covevent.com" . "\r\n" .
             "CC: support@covevent.com";
 

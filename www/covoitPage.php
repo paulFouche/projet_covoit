@@ -334,6 +334,22 @@
         console.log(response);
       });
 
+      var emailSettings = {
+        "url": "http://dev.paul-fouche.com/emailReservation.php",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "data": "{\n\t\"id_utilisateur\": \"" + <?php echo $_SESSION["id"]; ?> 
+                + "\",\n    \"email\": \"" + <?php echo $_SESSION["email"]; ?>
+                + "\",\n    \"subject\": \"" + "Reservation"
+                + "\",\n    \"txt\": \"" + "Votre reservation est enregistree." + "\"\n}",
+      };
+
+      $.ajax(emailSettings).done(function (response) {
+      });
+
       var settings = {
         "url": "http://dev.paul-fouche.com/API/reservation/create.php",
         "method": "POST",
@@ -349,6 +365,8 @@
         console.log("c'est réservé")
         document.location.href="emailReservation.php"
       });
+
+
 
     }
 </script>

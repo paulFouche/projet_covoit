@@ -38,7 +38,7 @@
         <div class="col-lg-6">
           <div class="p-5">
             <h2 class="display-4">Allez aux plus grands festivals!</h2>
-            <p>Rassemblez-vous lors d'un covoiturage afin d'économiser de l'argent et partager un moment avec les même fans que vous</p>
+            <p>Rassemblez-vous lors d'un covoiturage afin d'économiser de l'argent et partager un moment avec d'autres fans.</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
             <h2 class="display-4">Ne ratez pas un évènement !</h2>
-            <p>Ne laissez pas le trajet devenir l'ennemie de vos passion, grâce à Covevent vous pouvez tout faire !</p>
+            <p>Ne laissez pas le trajet devenir l'ennemi de vos passions, grâce à CovEvent vous pouvez tout faire !</p>
           </div>
         </div>
       </div>
@@ -64,27 +64,6 @@
   </section><!-- /.container -->
 
   <?php include 'view/footer.php'; ?>
-
-  <?php
-      $to = "julien@bardin.me";
-      $subject = "My subject";
-      $txt = "Hello world!";
-      $headers = "From: test@covevent.com" . "\r\n" .
-      "CC: covevent@covevent.com";
-      
-      
-
-      echo '<script>console.log("email here")</script>';
-
-      if(mail($to,$subject,$txt,$headers))
-      {
-              echo "<script>console.log(L'email a bien été envoyé.</script>";
-      }
-      else
-      {
-              echo "<script>console.log(Une erreur c'est produite lors de l'envois de l'email.</script>";
-      }
-      ?>
       
 
     <!-- Optional JavaScript -->

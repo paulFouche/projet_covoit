@@ -64,18 +64,18 @@
   ?>
     <form class="form-signin" action="login_script.php" method="POST">
       <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
+      <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+      <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
+      <label for="inputPassword" class="sr-only">Mot de passe</label>
       <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> Se rappeler de moi
         </label>
       </div>
       <input class="btn btn-lg btn-primary btn-block" type="submit" id='submit' value='Sign in'>
-      <p class="mt-5 mb-3 text-muted">2020 - CovEvent Inc.s</p>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020 - CovEvent</p>
     </form>
 
 

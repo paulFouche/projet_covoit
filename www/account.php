@@ -80,7 +80,7 @@
         echo $requete;
 
         curl_setopt_array($curling, array(
-          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password,
+          CURLOPT_URL => $url_api."/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -172,7 +172,7 @@
       <script>
 
 
-
+        const url_api = "http://dev.paul-fouche.com"; //CHANGER L'URL ICI
 
         var id = <?php echo $_SESSION["id"]; ?>; // ICI JULIEN REGARDE LA 
 
@@ -204,7 +204,7 @@
         }
 
 
-        let url_base_covoit = "http://dev.paul-fouche.com/API/covoiturage/read_my_covoiturage.php?id="
+        let url_base_covoit = url_api.concat("/API/covoiturage/read_my_covoiturage.php?id=");
         let url_covoit = url_base_covoit.concat(id)
 
         var settings_covoit = {
@@ -222,7 +222,7 @@
           displayCovoit()
         });
 
-        let url_base_reser = "http://dev.paul-fouche.com/API/covoiturage/read_one_reservation.php?id="
+        let url_base_reser = url_api.concat("/API/covoiturage/read_one_reservation.php?id=");
         let url_reser = url_base_reser.concat(id)
 
         var settings_resa = {
@@ -240,7 +240,7 @@
           displayResa()
         });
 
-        let url_base_user = "http://dev.paul-fouche.com/API/utilisateur/read_one.php?id="
+        let url_base_user = url_api.concat("/API/utilisateur/read_one.php?id=");
         let url_user = url_base_user.concat(id)
 
         var settings_user = {

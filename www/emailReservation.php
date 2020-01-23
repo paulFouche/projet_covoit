@@ -5,6 +5,9 @@
             $creator_id = $_GET['id'];
             $user_id = $_SESSION["id"];
 
+            echo "creator : " + $creator_id;
+            echo "user : " + $user_id;
+
 
             $curl = curl_init();
 

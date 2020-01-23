@@ -32,8 +32,9 @@ if(isset($_POST['nb_place']) && isset($_POST['prix']))
         //next example will insert new conversation
         $service_url = $url_api.'/API/covoiturage/create.php';
         $curl = curl_init($service_url);
+        $id = $_SESSION["id"];
         $curl_post_data = array(
-                'id_createur' => 1,
+                'id_createur' => $id,
                 'id_evenement' => $id_event,
                 'localisation_arrive' => $localisation_arrive,
                 'localisation_depart' => $localisation_depart,

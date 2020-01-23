@@ -336,7 +336,7 @@
 
       var emailSettings = {
         "url": "http://dev.paul-fouche.com/emailReservation.php",
-        "method": "POST",
+        "method": "GET",
         "timeout": 0,
         "headers": {
           "Content-Type": "text/plain"

@@ -41,7 +41,7 @@
       }
 
       #informations {
-        display: block;
+        display: contents;
       }
 
       #reservations {
@@ -165,18 +165,18 @@
         function afficher_informations() {
           document.getElementById("reservations").style.display = "none";
           document.getElementById("covoiturages").style.display = "none";
-          document.getElementById("informations").style.display = "block";
+          document.getElementById("informations").style.display = "contents";
         }
 
         function afficher_reservations() {
-          document.getElementById("reservations").style.display = "block";
+          document.getElementById("reservations").style.display = "contents";
           document.getElementById("covoiturages").style.display = "none";
           document.getElementById("informations").style.display = "none";
         }
 
         function afficher_covoiturages() {
           document.getElementById("reservations").style.display = "none";
-          document.getElementById("covoiturages").style.display = "block";
+          document.getElementById("covoiturages").style.display = "contents";
           document.getElementById("informations").style.display = "none";
         }
 

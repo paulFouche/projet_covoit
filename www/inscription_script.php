@@ -18,19 +18,22 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
     $tel = mysqli_real_escape_string($db,htmlspecialchars($_POST['tel']));
 
-    $to = $email;
-    $subject = "Inscription";
-    $txt = "Votre inscription a bien été prise en charge par CovEvent.";
-    $headers = "From: contact@covevent.com" . "\r\n" .
-    "CC: support@covevent.com";
-
-    echo '<script>console.log("email here")</script>';
-
-    mail($to,$subject,$txt,$headers);
+    
         
 
     if($email !== "" && $password !== "")
     {
+        $to = $email;
+        $subject = "Inscription";
+        $txt = "Votre inscription a bien ete prise en charge par CovEvent.";
+        $headers = "From: contact@covevent.com" . "\r\n" .
+        "CC: support@covevent.com";
+
+        echo '<script>console.log("email here")</script>';
+
+        mail($to,$subject,$txt,$headers);
+
+
 
         $curl = curl_init();
 

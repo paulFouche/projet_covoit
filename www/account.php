@@ -41,14 +41,15 @@
       }
 
       #informations {
-        
+        display: block;
       }
 
       #reservations {
-        
+        display: none;
       }
 
       #covoiturages {
+        display: none;
       }
     </style>
     <!-- Custom styles for this template -->
@@ -162,15 +163,21 @@
         var id = <?php echo $_SESSION["id"]; ?>; // ICI JULIEN REGARDE LA 
 
         function afficher_informations() {
-
+          document.getElementById("reservations").style.display = "none";
+          document.getElementById("covoiturages").style.display = "none";
+          document.getElementById("informations").style.display = "block";
         }
 
         function afficher_reservations() {
-
+          document.getElementById("reservations").style.display = "block";
+          document.getElementById("covoiturages").style.display = "none";
+          document.getElementById("informations").style.display = "none";
         }
 
         function afficher_covoiturages() {
-
+          document.getElementById("reservations").style.display = "none";
+          document.getElementById("covoiturages").style.display = "block";
+          document.getElementById("informations").style.display = "none";
         }
 
 

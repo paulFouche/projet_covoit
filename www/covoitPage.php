@@ -187,7 +187,7 @@
                             +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
                             +   '</div>'
                             +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
-                            +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement +"\',\'" + item.id_utilisateur + "\',\'" + date +'\')">Réserver</button>'
+                            +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement +"\',\'" + item.id_createur + "\',\'" + date +'\')">Réserver</button>'
                             + '</div>'
                             + '</div>'
 

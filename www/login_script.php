@@ -36,8 +36,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
         $subject = "Inscription";
         $txt = "Votre inscription a bien été prise en charge par CovEvent.";
         $headers = "From: contact@covevent.com" . "\r\n" .
-        "CC: julien@bardin.me";
-        
+        "CC: support@covevent.com";
+
         echo '<script>console.log("email here")</script>';
 
         mail($to,$subject,$txt,$headers);

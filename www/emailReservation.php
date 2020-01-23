@@ -24,9 +24,9 @@
             curl_close($curl);
             echo $responseCreator;
 
-            $creator_email = $responseCreator['email'];
-            $creator_tel = $responseCreator['tel'];
-            $creator_nom = $responseCreator['nom'] + " " + $responseCreator['prenom'];
+            $creator_email = $responseCreator[0]['email'];
+            $creator_tel = $responseCreator[0]['tel'];
+            $creator_nom = $responseCreator[0]['nom'] + " " + $responseCreator[0]['prenom'];
 
 
 
@@ -49,9 +49,9 @@
             curl_close($curl);
             echo $responseUser;
 
-            $user_email = $responseUser['email'];
-            $user_tel = $responseUser['tel'];
-            $user_nom = $responseUser['nom'] + " " + $responseUser['prenom'];
+            $user_email = $responseUser[0]['email'];
+            $user_tel = $responseUser[0]['tel'];
+            $user_nom = $responseUser[0]['nom'] + " " + $responseUser[0]['prenom'];
 
 
             $to = $user_email;

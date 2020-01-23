@@ -164,7 +164,10 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <div class="row" id="assistance" class="my-4"></div>
+          <div class="row" id="assistance" class="my-4">
+            
+            <p style="margin: 5%; font-size: 16px;">Si vous rencontrez une quelconque difficulté, ou que vous souhaitez supprimer une réservation ou un covoiturage alors veuillez contacter le service technique à l'adresse suivante : assistance@covevent.com </p>
+          </div>
         </div>
       </div>
 

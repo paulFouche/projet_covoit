@@ -334,18 +334,6 @@
         console.log(response);
       });
 
-      <?php
-            $to = $email;
-              $subject = "Réservation";
-              $txt = "Votre réservation a bien été prise en charge par CovEvent.";
-              $headers = "From: contact@covevent.com" . "\r\n" .
-              "CC: support@covevent.com";
-
-              echo '<script>console.log("email here")</script>';
-
-              mail($to,$subject,$txt,$headers);
-      ?>
-
       var settings = {
         "url": "http://dev.paul-fouche.com/API/reservation/create.php",
         "method": "POST",
@@ -359,7 +347,7 @@
       $.ajax(settings).done(function (response) {
         console.log(response);
         console.log("c'est réservé")
-        document.location.href="index.php"
+        document.location.href="emailReservation.php"
       });
 
     }

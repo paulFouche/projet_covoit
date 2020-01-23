@@ -31,17 +31,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
         $count = $reponse['count(*)'];
         $numUtilisateur = $reponse['id'];
 
-
-        $to = $_POST['email'];
-        $subject = "Inscription";
-        $txt = "Votre inscription a bien été prise en charge par CovEvent.";
-        $headers = "From: contact@covevent.com" . "\r\n" .
-        "CC: support@covevent.com";
-
-        echo '<script>console.log("email here")</script>';
-
-        mail($to,$subject,$txt,$headers);
-        
         if($count!=0) // nom d'utilisateur et mot de passe correctes
         {
             $_SESSION["email"]=$email;

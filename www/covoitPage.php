@@ -122,7 +122,7 @@
     console.log("test")
     var listCovoits = [];
     var confirmationCovoit = {
-      id_utilisateur : <?php echo $_SESSION["id"]; ?>,
+      id_utilisateur : 0,
       id_evenement : 0,
       id_covoit : 0,
     }
@@ -184,7 +184,7 @@
                             +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
                             +   '</div>'
                             +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
-                            +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
+                            +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement +"\',\'" + item.id_utilisateur + "\',\'" + date +'\')">Réserver</button>'
                             + '</div>'
                             + '</div>'
 
@@ -284,9 +284,10 @@
       document.getElementById(selection).innerHTML = html
     }
 
-    function setCurrent(id,localisation_depart,localisation_arrive,prix,id_evenement,depart_date){
+    function setCurrent(id,localisation_depart,localisation_arrive,prix,id_evenement,id_utilisateur,depart_date){
       confirmationCovoit.id = id
       confirmationCovoit.id_evenement = id_evenement
+      confirmationCovoit.id_utilisateur = id_utilisateur
       console.log("changement")
       document.getElementById("currentSelection").innerHTML =  localisation_depart 
                                                               + ' - '+ localisation_arrive
@@ -335,7 +336,7 @@
       });
 
       var emailSettings = {
-        "url": "http://dev.paul-fouche.com/emailReservation.php",
+        "url": "http://dev.paul-fouche.com/emailReservation.php?id=" + confirmationCovoit.id_utilisateur,
         "method": "GET",
         "timeout": 0,
         "headers": {

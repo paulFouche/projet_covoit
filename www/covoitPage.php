@@ -341,8 +341,8 @@
         "headers": {
           "Content-Type": "text/plain"
         },
-        "data": "{\n\t\"id_utilisateur\": \"" + <?php echo $_SESSION["id"]; ?> 
-                + "\",\n    \"email\": \"" + <?php echo $_SESSION["email"]; ?>
+        "data": "{\n\t\"id_utilisateur\": \"" + "<?php echo $_SESSION["id"]; ?> "
+                + "\",\n    \"email\": \"" + "<?php echo $_SESSION["email"]; ?>"
                 + "\",\n    \"subject\": \"" + "Reservation"
                 + "\",\n    \"txt\": \"" + "Votre reservation est enregistree." + "\"\n}",
       };

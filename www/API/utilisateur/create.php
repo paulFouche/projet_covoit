@@ -30,6 +30,10 @@ $utilisateur->nom = $data->nom;
 $utilisateur->email = $data->email;
 $utilisateur->password = $data->password;
 $utilisateur->tel = $data->tel;
+
+$email = $data->email;
+
+$email_exists = emailExists($email);
 //$utilisateur->tel = $data->tel;
 
 // create the utilisateur
@@ -39,7 +43,8 @@ if(
     !empty($utilisateur->password) &&
     !empty($utilisateur->nom) &&
     !empty($utilisateur->tel) &&
-    $utilisateur->create()
+    $utilisateur->create() &&
+    $email_exists==false
 ){
  
     // set response code

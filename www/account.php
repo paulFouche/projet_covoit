@@ -97,59 +97,52 @@
   ?>
     <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky" style="margin-top: 20%; height: 100%">
-        <ul class="nav flex-column">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 100vh">
+      <div class="sidebar-sticky" style="height: 100vh">
+        <ul class="nav flex-column" style="margin-top: 25%;">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
-              Mes informations <span class="sr-only">(current)</span>
+            <a class="nav-link" href="#informations">
+              Mes informations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
+            <a class="nav-link" href="#reservations">
               Mes reservations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
+            <a class="nav-link" href="#covoiturages">
               Mes covoiturages
             </a>
           </li>
         </ul>
       </div>
     </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 " style="margin-top: 12%" id="informations">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 10%">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes informations</h1>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <div class="row" id="informations" class="my-4">
+          <div class="row" id="informations" class="my-4"></div>
         </div>
       </div>
-    </main>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="reservations">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes réservations</h1>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <div class="row" id="reservations" class="my-4">
+          <div class="row" id="reservations" class="my-4"></div>
         </div>
       </div>
-    </main>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-top: 4%" id="covoiturages">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Mes covoiturages</h1>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <div class="row" id="covoits" class="my-4">
+          <div class="row" id="covoits" class="my-4"></div>
         </div>
       </div>
     </main>
@@ -164,7 +157,6 @@
       <script>
 
         var id = <?php echo $_SESSION["id"]; ?>; // ICI JULIEN REGARDE LA 
-        console.log(id);
         let url_base_covoit = "http://dev.paul-fouche.com/API/covoiturage/read_my_covoiturage.php?id="
         let url_covoit = url_base_covoit.concat(id)
 
@@ -233,11 +225,6 @@
                                 +     '<h5>'+ item.prix +' €</h5>'
                                 +     '<p class="card-text"> date : ' + date + '</p>'
                                 +   '</div>'
-                                +   '<div class="card-footer">'
-                                +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
-                                +   '</div>'
-                                +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
-                                +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
                                 + '</div>'
                                 + '</div>'
 

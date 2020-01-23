@@ -118,12 +118,10 @@ function create(){
 }
  
 // check if given email exist in the database
-function emailExists(){
+function emailExists($email){
  
     // query to check if email exists
-    $query = "SELECT id, prenom, nom, password
-            FROM " . $this->table_name . " WHERE email = ?
-            LIMIT 0,1";
+    $query = "SELECT * FROM " . $this->table_name . " WHERE email =".$email." ";
  
     // prepare the query
     $stmt = $this->conn->prepare( $query );
@@ -143,18 +141,6 @@ function emailExists(){
     // if email exists, assign values to object properties for easy access and use for php sessions
     if($num>0){
  
-        // get record details / values
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
- 
-        // assign values to object properties
-        $this->id = $row['id'];
-        $this->prenom = $row['prenom'];
-        $this->nom = $row['nom'];
-        $this->password = $row['password'];
-        $this->email = $row['email'];
-        $this->tel = $row['tel'];
- 
-        // return true because email exists in the database
         return true;
     }
  

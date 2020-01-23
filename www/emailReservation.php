@@ -64,7 +64,7 @@
 
             $to = $user_email;
             $subject = 'Reservation';
-            $txt = 'Votre reservation a bien été prise en compte, voici les coordonnées de votre correspondant : '.$creator_nom.' '.$creator_prenom.', email : '.$creator_email.', tel : '.$creator_tel.'Covevent vous souhaites un excellent voyage :)';
+            $txt = 'Votre reservation a bien été prise en compte, voici les coordonnées de votre correspondant : '.$creator_nom.' '.$creator_prenom.', email : '.$creator_email.', tel : '.$creator_tel.' Covevent vous souhaites un excellent voyage :)';
             $headers = "From: contact@covevent.com" . "\r\n" .
             "CC: support@covevent.com";
 
@@ -78,7 +78,7 @@
             $subject = 'Reservation';
             $txt = 'Quelqu\'un a reserver une place dans votre vehicule, voici les coordonnées de votre correspondant : ' 
                     +'[nom : '.$user_nom.', email : '.$user_email.', tel : '.$user_tel.']';
-            $txt = 'Quelqu\'un a reserver une place dans votre vehicule, voici les coordonnées de votre correspondant : '.$user_nom.' '.$user_prenom.', email : '.$user_email.', tel : '.$user_tel.'Covevent vous souhaites un excellent voyage :)';
+            $txt = 'Quelqu\'un a reserver une place dans votre vehicule, voici les coordonnées de votre correspondant : '.$user_nom.' '.$user_prenom.', email : '.$user_email.', tel : '.$user_tel.' Covevent vous souhaites un excellent voyage :)';
             $headers = "From: contact@covevent.com" . "\r\n" .
             "CC: support@covevent.com";
 

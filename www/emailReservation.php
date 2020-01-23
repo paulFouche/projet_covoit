@@ -11,7 +11,7 @@
 
 
             if($_SESSION["email"]){
-              $to2 = $_SESSION["email"];
+              $to2 = "\"" + $_SESSION["email"] + "\"";
               $subject2 = 'c est un test';
               $txt2 = 'le test est là ';
               $headers2 = "From: contact@covevent.com" . "\r\n" .

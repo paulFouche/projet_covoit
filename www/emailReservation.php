@@ -19,12 +19,12 @@
               CURLOPT_CUSTOMREQUEST => "GET",
             ));
 
-            $responseCreator = curl_exec($curl);
+            $dataCreator = curl_exec($curl);
 
             curl_close($curl);
-            echo $responseCreator;
+            $responseCreator - json_decode($dataCreator);
 
-            $creator_email = $responseCreator[0]['email'];
+            $creator_email = $responseCreator['email'];
             $creator_tel = $responseCreator[0]['tel'];
             $creator_nom = $responseCreator[0]['nom'] + " " + $responseCreator[0]['prenom'];
 
@@ -44,10 +44,10 @@
               CURLOPT_CUSTOMREQUEST => "GET",
             ));
 
-            $responseUser = curl_exec($curl);
+            $dataUser = curl_exec($curl);
 
             curl_close($curl);
-            echo $responseUser;
+            $responseUser - json_decode($dataUser);
 
             $user_email = $responseUser[0]['email'];
             $user_tel = $responseUser[0]['tel'];

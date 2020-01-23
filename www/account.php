@@ -52,17 +52,10 @@
         display: none;
       }
 
-      #info {
-        display: contents;
-      }
-
-      #resa{
+      #assistance {
         display: none;
       }
 
-      #covo {
-        display: none;
-      }
 
     </style>
     <!-- Custom styles for this template -->
@@ -130,6 +123,11 @@
               Mes covoiturages
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="afficher_assistance()">
+              Assistance
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -160,6 +158,16 @@
           <div class="row" id="covoits" class="my-4"></div>
         </div>
       </div>
+
+      <div id="resa" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="resa">
+        <h1 class="h2">Assistance</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row" id="assistance" class="my-4"></div>
+        </div>
+      </div>
+
     </main>
 
   </div>
@@ -180,6 +188,7 @@
           document.getElementById("reservations").style.display = "none";
           document.getElementById("covoits").style.display = "none";
           document.getElementById("informations").style.display = "flex";
+          document.getElementById("assistance").style.display = "none";
           document.getElementById("resa").style.display = "none";
           document.getElementById("covo").style.display = "none";
           document.getElementById("info").style.display = "flex";
@@ -189,6 +198,7 @@
           document.getElementById("reservations").style.display = "flex";
           document.getElementById("covoits").style.display = "none";
           document.getElementById("informations").style.display = "none";
+          document.getElementById("assistance").style.display = "none";
           document.getElementById("resa").style.display = "flex";
           document.getElementById("covo").style.display = "none";
           document.getElementById("info").style.display = "none";
@@ -198,6 +208,17 @@
           document.getElementById("reservations").style.display = "none";
           document.getElementById("covoits").style.display = "flex";
           document.getElementById("informations").style.display = "none";
+          document.getElementById("assistance").style.display = "none";
+          document.getElementById("resa").style.display = "none";
+          document.getElementById("covo").style.display = "flex";
+          document.getElementById("info").style.display = "none";
+        }
+
+        function afficher_assistance() {
+          document.getElementById("reservations").style.display = "none";
+          document.getElementById("covoits").style.display = "none";
+          document.getElementById("informations").style.display = "none";
+          document.getElementById("assistance").style.display = "flex";
           document.getElementById("resa").style.display = "none";
           document.getElementById("covo").style.display = "flex";
           document.getElementById("info").style.display = "none";

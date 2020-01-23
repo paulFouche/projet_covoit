@@ -70,8 +70,6 @@
 
       $curling = curl_init();
         $requete=$url_api."/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password ;
-        echo $requete;
-
         curl_setopt_array($curling, array(
           CURLOPT_URL => $url_api."/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password,
           CURLOPT_RETURNTRANSFER => true,
@@ -92,7 +90,6 @@
         $id_str = $informations->id;
         $id_str_2=str_replace(' ','',$id_str);
         $id = (int)$id_str_2;
-        //echo $id;
 
         $_SESSION["id"] = $id;
 

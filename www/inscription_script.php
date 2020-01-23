@@ -52,7 +52,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "<?php echo $url; ?>API/utilisateur/create.php",
+          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/create.php",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -70,7 +70,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
         $resp = $response;
 
         curl_close($curl);
-        echo $resp;
         if ($resp == 'false') {
             echo "je suis dans le false";
             header('Location: index.php');

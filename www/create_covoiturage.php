@@ -114,8 +114,9 @@
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script>
+        const url_api = "http://dev.paul-fouche.com";
         var settings = {
-          "url": "http://dev.paul-fouche.com/API/evenement/read.php",
+          "url": url_api.concat("/API/evenement/read.php"),
           "method": "GET",
           "timeout": 0,
           "headers": {

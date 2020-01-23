@@ -28,8 +28,9 @@ if(isset($_POST['nb_place']) && isset($_POST['prix']))
     
     if($nb_place !== "" && $prix !== "")
     {
+        $url_api = "http://dev.paul-fouche.com";
         //next example will insert new conversation
-        $service_url = 'http://dev.paul-fouche.com/API/covoiturage/create.php';
+        $service_url = $url_api.'/API/covoiturage/create.php';
         $curl = curl_init($service_url);
         $curl_post_data = array(
                 'id_createur' => 1,

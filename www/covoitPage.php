@@ -119,6 +119,9 @@
 </html>
 
 <script>
+    const url_api = "http://dev.paul-fouche.com"; //CHANGER L'URL ICI
+
+
     console.log("test")
     var listCovoits = [];
     var confirmationCovoit = {
@@ -146,7 +149,7 @@
     }
     
     var settings = {
-      "url": "http://dev.paul-fouche.com/API/covoiturage/read.php",
+      "url": url_api.concat("/API/covoiturage/read.php"),
       "method": "GET",
       "timeout": 0,
     };
@@ -307,7 +310,7 @@
     function covoiturageConfirme(){
 
       var settingsCovoit = {
-        "url": "http://dev.paul-fouche.com/API/covoiturage/updateReservationMoins.php",
+        "url": url_api.concat("/API/covoiturage/updateReservationMoins.php"),
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -321,7 +324,7 @@
       });
 
       var settingsEvent = {
-        "url": "http://dev.paul-fouche.com/API/evenement/updateReservationMoins.php",
+        "url": url_api.concat("/API/evenement/updateReservationMoins.php"),
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -335,7 +338,7 @@
       });
 
       var emailSettings = {
-        "url": "http://dev.paul-fouche.com/emailReservation.php",
+        "url": url_api.concat("/emailReservation.php"),
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -349,7 +352,7 @@
       });
 
       var settings = {
-        "url": "http://dev.paul-fouche.com/API/reservation/create.php",
+        "url": url_api.concat("/API/reservation/create.php"),
         "method": "POST",
         "timeout": 0,
         "headers": {

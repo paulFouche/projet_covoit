@@ -40,6 +40,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
     {
 
         $curl = curl_init();
+        $url_api = "http://dev.paul-fouche.com";
 
         $curl_post_data = array(
                 'prenom' => $prenom,
@@ -52,7 +53,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "http://dev.paul-fouche.com/API/utilisateur/create.php",
+          CURLOPT_URL => $url_api."/API/utilisateur/create.php",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,

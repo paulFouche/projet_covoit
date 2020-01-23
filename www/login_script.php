@@ -13,13 +13,21 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $db_password = '7r5XEz4y3HVrM32k';
     $db_name     = 'paulfoucjsazerty';
     $db_host     = 'paulfoucjsazerty.mysql.db';
-    $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
-           or die('could not connect to database');
+    $db = mysqli_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
+
+    //$db = pg_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
     
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
     // pour éliminer toute attaque de type injection SQL et XSS
     $email = mysqli_real_escape_string($db,htmlspecialchars($_POST['email'])); 
     $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
+
+
+    //$email = pg_escape_string($db,htmlspecialchars($_POST['email'])); 
+    //$password = pg_escape_string($db,htmlspecialchars($_POST['password']));
+
+
+
     session_start();
     if($email !== "" && $password !== "")
     {

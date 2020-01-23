@@ -51,6 +51,19 @@
       #covoits {
         display: none;
       }
+
+      #info {
+        display: contents;
+      }
+
+      #resa{
+        display: none;
+      }
+
+      #covo {
+        display: none;
+      }
+
     </style>
     <!-- Custom styles for this template -->
   </head>
@@ -59,10 +72,11 @@
       session_start();
       $email = $_SESSION["email"];
       $password = $_SESSION["password"];
+      $url_api = "http://dev.paul-fouche.com";
 
 
       $curling = curl_init();
-        $requete="http://dev.paul-fouche.com/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password ;
+        $requete=$url_api."/API/utilisateur/read_one_by_email.php?email=".$email."&password=".$password ;
         echo $requete;
 
         curl_setopt_array($curling, array(
@@ -98,21 +112,21 @@
   ?>
     <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 100vh">
-      <div class="sidebar-sticky" style="height: 100vh">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 200vh">
+      <div class="sidebar-sticky" style="height: 200vh">
         <ul class="nav flex-column" style="margin-top: 25%;">
           <li class="nav-item">
-            <a class="nav-link" href="#informations" onclick="afficher_informations()">
+            <a class="nav-link" onclick="afficher_informations()">
               Mes informations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#reservations" onclick="afficher_reservations()">
+            <a class="nav-link" onclick="afficher_reservations()">
               Mes reservations
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#covoiturages" onclick="afficher_covoiturages()">
+            <a class="nav-link" onclick="afficher_covoiturages()">
               Mes covoiturages
             </a>
           </li>
@@ -129,7 +143,7 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div id="resa" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="resa">
         <h1 class="h2">Mes réservations</h1>
       </div>
       <div class="row">
@@ -138,7 +152,7 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div id="covo" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" id="covo">
         <h1 class="h2">Mes covoiturages</h1>
       </div>
       <div class="row">
@@ -165,19 +179,28 @@
         function afficher_informations() {
           document.getElementById("reservations").style.display = "none";
           document.getElementById("covoits").style.display = "none";
-          document.getElementById("informations").style.display = "contents";
+          document.getElementById("informations").style.display = "flex";
+          document.getElementById("resa").style.display = "none";
+          document.getElementById("covo").style.display = "none";
+          document.getElementById("info").style.display = "flex";
         }
 
         function afficher_reservations() {
-          document.getElementById("reservations").style.display = "contents";
+          document.getElementById("reservations").style.display = "flex";
           document.getElementById("covoits").style.display = "none";
           document.getElementById("informations").style.display = "none";
+          document.getElementById("resa").style.display = "flex";
+          document.getElementById("covo").style.display = "none";
+          document.getElementById("info").style.display = "none";
         }
 
         function afficher_covoiturages() {
           document.getElementById("reservations").style.display = "none";
-          document.getElementById("covoits").style.display = "contents";
+          document.getElementById("covoits").style.display = "flex";
           document.getElementById("informations").style.display = "none";
+          document.getElementById("resa").style.display = "none";
+          document.getElementById("covo").style.display = "flex";
+          document.getElementById("info").style.display = "none";
         }
 
 
@@ -271,11 +294,6 @@
                                 +     '<h5>'+ item.prix +' €</h5>'
                                 +     '<p class="card-text"> date : ' + date + '</p>'
                                 +   '</div>'
-                                +   '<div class="card-footer">'
-                                +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'
-                                +   '</div>'
-                                +   '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"'
-                                +   'onclick="setCurrent(\'' + item.id +"\',\'" + item.localisation_depart + "\',\'" +  item.localisation_arrive + "\',\'" + item.prix + "\',\'" + item.id_evenement + "\',\'" + date +'\')">Réserver</button>'
                                 + '</div>'
                                 + '</div>'
 

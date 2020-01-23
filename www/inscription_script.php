@@ -75,7 +75,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
         curl_close($curl);
         if ($resp == 'false') {
-            echo "je suis dans le false";
             header('Location: index.php');
         } 
 
@@ -85,7 +84,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
             $_SESSION["prenom"]=$prenom;
             $_SESSION["nom"]=$nom;
 
-            echo "je suis dans le true";
             mail($to,$subject,$txt,$headers);
             header('Location: account.php');
         } 

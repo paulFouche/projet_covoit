@@ -77,7 +77,7 @@
 
         <div class="mb-3">
           <label for="email">Login</label>
-          <input type="email" class="form-control" id="login" name="login" placeholder="login">
+          <input type="text" class="form-control" id="login" name="login" placeholder="login">
         </div>
 
         <div class="mb-3">

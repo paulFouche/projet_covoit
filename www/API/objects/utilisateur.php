@@ -13,6 +13,7 @@ class Utilisateur{
     public $email;
     public $password;
     public $tel;
+    public $login;
  
     // constructor
     public function __construct($db){

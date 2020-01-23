@@ -1,4 +1,6 @@
 <?php
+
+            session_start();
             $to = "julien@bardin.me";
               $subject = 'c est un test';
               $txt = 'le text est là ';

@@ -63,7 +63,7 @@
   <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h2>Creer un covoiturage</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <p class="lead"></p>
   </div>
 
   <div class="row justify-content-md-center">
@@ -87,10 +87,6 @@
           <div class="col-md-6 mb-3">
             <label for="firstName">Date de départ</label>
             <input type="date" class="form-control" id="depart_date" name="depart_date" placeholder="" value="" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Date de retour</label>
-            <input type="date" class="form-control" id="retour_date" name="retour_date" placeholder="" value="" required>
           </div>
         </div>
 

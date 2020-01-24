@@ -181,7 +181,7 @@
                             +       '<a href="#">'+ item.localisation_depart + ' - '+ item.localisation_arrive +'</a>'
                             +     '</h4>'
                             +     '<h5>'+ item.prix +' €</h5>'
-                            +     '<p class="card-text"> date : ' + date + '</p>'
+                            +     '<p class="card-text"> date : ' + date + '<br> Evenement : ' + item.nom_evenement + '</p>'
                             +   '</div>'
                             +   '<div class="card-footer">'
                             +     '<small class="text-muted">Places disponibles:  ' + item.nb_place + '</small>'

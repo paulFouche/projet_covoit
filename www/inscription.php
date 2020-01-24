@@ -61,41 +61,31 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">Prenom</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Un prénom valide est requis.
-            </div>
-          </div>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="" required>          </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Nom</label>
             <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Un nom valide est requis.
-            </div>
           </div>
         </div>
 
         <div class="mb-3">
           <label for="email">Login</label>
-          <input type="text" class="form-control" id="login" name="login" placeholder="login">
+          <input type="text" class="form-control" id="login" name="login" placeholder="login" required>
         </div>
 
         <div class="mb-3">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+          <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
         </div>
 
         <div class="mb-3">
           <label for="address">Mot de Passe</label>
-          <input type="text" class="form-control" id="password" name="password" placeholder="a secret password" required>
-          <div class="invalid-feedback">
-            Entrer un mot de passe valide
-          </div>
+          <input type="password" class="form-control" id="password" name="password" placeholder="a secret password" required>
         </div>
 
         <div class="mb-3">
           <label for="address2">Téléphone</label>
-          <input type="text" class="form-control" id="tel" name="tel" placeholder="+33 6 35 57 58 74">
+          <input type="text" class="form-control" id="tel" name="tel" placeholder="+33 6 35 57 58 74" required>
         </div>
 
         <hr class="mb-4">
